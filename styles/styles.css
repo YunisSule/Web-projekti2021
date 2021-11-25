@@ -1,3 +1,26 @@
 #content {
   background-color: rgb(228, 245, 255);
 }
+
+/* STYLES FOR QUIZ PAGES 
+ADD YOUR OWN STYLING HERE */
+
+#englanti {
+  background-color: rgb(255, 255, 215);
+}
+
+#matikka {
+  background-color: rgb(228, 245, 255);
+}
+
+#maantieto {
+  background-color: rgb(228, 245, 255);
+}
+
+#historia {
+  background-color: rgb(228, 245, 255);
+}
+
+#paattelytehtava {
+  background-color: rgb(228, 245, 255);
+}
