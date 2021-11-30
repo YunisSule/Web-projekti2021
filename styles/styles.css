@@ -39,3 +39,12 @@ ADD YOUR OWN STYLING HERE */
   background-color: rgb(228, 245, 255);
   display: inline-block;
 }
+
+#paattelytehtava > button {
+  background: none;
+  border: none;
+}
+
+#paattelytehtava > button:hover {
+  color: green;
+}
