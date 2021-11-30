@@ -7,6 +7,9 @@
   float: right;
   margin: 10px;
 }
+#etusivu {
+  background-color: rgb(228, 245, 255);
+}
 
 /* STYLES FOR QUIZ PAGES 
 ADD YOUR OWN STYLING HERE */
@@ -23,7 +26,7 @@ ADD YOUR OWN STYLING HERE */
 }
 
 #maantieto {
-  background-color: 	rgb(144,238,144);
+  background-color: rgb(144, 238, 144);
   display: inline-block;
 }
 
