@@ -2,11 +2,13 @@
   background-color: rgb(228, 245, 255);
 }
 
+
 /* STYLES FOR QUIZ PAGES 
 ADD YOUR OWN STYLING HERE */
 
 #englanti {
-  background-color: rgb(255, 255, 215);
+  background-color: rgb(226, 255, 238);
+  padding: 10px;
 }
 
 #matikka {
