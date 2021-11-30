@@ -16,7 +16,7 @@
   </head>
   <body>
     <div class="container">
-      <header style="text-align: center"><img src="../images/onlinelearning.png" alt="" style="height: 200px" /></header>
+      <header style="text-align: center"><img src="../images/mathematics-image.jpg" alt="" style="height: 200px" /></header>
       <div>
         <ul class="nav nav-tabs navbar-expand-md navbar-light">
           <button
@@ -57,18 +57,76 @@
           <label for="formGroupExampleInput" class="form-label">Osallistujan nimi</label>
           <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Etunimi Sukunimi" />
         </div>
-        <h3 class="text-center">Tietovisa</h3>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus fugit cumque odio, eaque et aperiam illo, magnam consequuntur necessitatibus corporis officiis ipsa iste sit. Voluptas,
-          exercitationem laboriosam dolore velit modi quod at facere ullam nesciunt impedit nostrum, quis molestiae error eaque magni ipsam culpa, fuga blanditiis quaerat esse? Corrupti debitis,
-          dolore exercitationem reiciendis sequi dolores? Facere sint distinctio cumque placeat repellendus voluptates, laboriosam officia rerum itaque nam cum praesentium incidunt, perferendis,
-          maiores nemo tenetur voluptatibus ullam quaerat doloremque corporis impedit nulla vel dolore in? Delectus totam ipsam nostrum! Corrupti, quos ea! Exercitationem quod, id quo voluptatum
-          adipisci deleniti, iusto qui tenetur corporis laborum eos architecto facere maiores temporibus ut eius eligendi vel dicta culpa ullam labore odio, ab dolorem eaque. Ratione suscipit tenetur
-          ea qui architecto sint officiis ex illo, expedita repudiandae delectus mollitia rerum, placeat vitae? Nisi provident, iste incidunt voluptates accusantium impedit laboriosam perferendis
-          deserunt atque reiciendis necessitatibus doloremque sit dicta doloribus deleniti aliquam voluptatum sed facilis corporis! Praesentium quia asperiores sint debitis corporis possimus facilis,
-          placeat quam ipsum omnis soluta sapiente recusandae culpa iusto non! Inventore quis, ratione, minima sapiente eum voluptate esse ipsam laborum minus facere aperiam cum, error ab amet. Dicta
-          labore sed corporis architecto?
-        </p>
+        <h3 class="text-center">Testaa matikan laskutaitosi!</h3>
+        <p id="taskExplaination">
+            Tässä tehtäväpaketissa on erilaisia matematiikan tehtäviä, joiden vaikeusaste kasvaa.
+            Kun olet tehnyt yhden tehtävän, paina "Valmis"-painiketta jotta näet saamasi pisteet.
+            Kun kaikki tehtävät on tehty, näet kokonaispistemääräsi. Testaa osaamistasi! Aloita painamalla painiketta "Aloita tehtävä".
+        </p>     
+        <div class="row justify-content-center" id="startTask">
+          <div class="col-auto">
+            <input type="button" value="Aloita Tehtävä" onclick="tasks()">
+          </div>
+        </div>
+
+        <div class="container d-none" id="container">
+          <div class="row align-items-center">
+            <div class="col">
+              <p>Tehtävä 1: <span id="taskOneQuestion"></span> <span id="taskOneResult"></span></p>
+            </div>
+            <div class="col">
+              <input type="text" name="taskOne" id="taskOne">
+              <input type="button" value="Lähetä" onclick="oneAnswer();">
+            </div>
+          </div>
+
+          <div class="row align-items-center">
+            <div class="col">
+              <p>Tehtävä 2: <span id="taskTwoQuestion"></span> <span id="taskTwoResult"></span></p>
+            </div>
+            <div class="col">
+              <input type="text" name="taskTwo" id="taskTwo">
+              <input type="button" value="Lähetä" onclick="twoAnswer();">
+            </div>
+          </div>
+
+          <div class="row align-items-center">
+            <div class="col">
+              <p>Tehtävä 3: <span id="taskThreeQuestion"></span> <span id="taskThreeResult"></span></p>
+            </div>
+            <div class="col">
+              <input type="text" name="taskThree" id="taskThree">
+              <input type="button" value="Lähetä" onclick="threeAnswer();">
+            </div>
+          </div>
+
+          <div class="row align-items-center">
+            <div class="col">
+              <p>Tehtävä 4: <span id="taskFourQuestion"></span> <span id="taskFourResult"></span></p>
+            </div>
+            <div class="col">
+              <input type="text" name="taskFour" id="taskFour">
+              <input type="button" value="Lähetä" onclick="fourAnswer();">
+            </div>
+          </div>
+
+          <div class="row align-items-center">
+            <div class="col">
+              <p>Tehtävä 5: <span id="taskFiveQuestion"></span> <span id="taskFiveResult"></span></p>
+            </div>
+            <div class="col">
+              <input class="" type="text" name="taskFive" id="taskFive">
+              <input type="button" value="Lähetä" onclick="fiveAnswer();">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p id="results"></p>
+            </div>
+          </div>
+        </div>
+        
         <i id="next" class="fas fa-arrow-right fa-3x"></i>
       </div>
       <footer class="text-center">
@@ -86,5 +144,6 @@
     ></script>
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/51ad89fa4c.js" crossorigin="anonymous"></script>
+    <script src="../js/matikka.js"></script>
   </body>
 </html>
