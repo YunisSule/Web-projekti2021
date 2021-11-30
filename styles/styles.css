@@ -8,16 +8,10 @@
   margin: 10px;
 }
 
-#info {
-  position: absolute;
-  right: 5vh;
-}
-
 /* STYLES FOR QUIZ PAGES 
 ADD YOUR OWN STYLING HERE */
 
 #englanti {
-  background-color: rgb(255, 255, 215);
   display: inline-block;
   background-color: rgb(226, 255, 238);
   padding: 10px;
