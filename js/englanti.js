@@ -53,13 +53,13 @@ let questions = [
    
     // funktio, jossa tehdään kysymykset ja tekstit sivulle.
     function allQuestion() {
-      document.querySelector('#form').classList = "hiding";
-      document.querySelector('#form2').classList = "hiding";
+      form.classList.add("hiding");
+      form2.classList.add("hiding");
         testing = get("testing");
         if(pos >= questions.length) {
             document.getElementById("testing").innerHTML = "<h2>Sait " + correct +" / "+questions.length+" oikein</h2>";
             document.getElementById("test_status").innerHTML = "Testi valmis!";
-            document.querySelector("#next").classList = "hiding"
+            next.classList.add("hiding");
             // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
             if(correct == 5) {
               document.getElementById("test_status").innerHTML = "Hienoa! Sait kaikki kysymykset oikein!"
