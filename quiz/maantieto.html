@@ -12,7 +12,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../styles/styles.css" />
-    <script src="js/maantieto.js" defer></script>
+    <script src="../js/maantieto.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -59,11 +59,11 @@
           <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Etunimi Sukunimi" />
         </div>
         <h3 class="text-center">Testaa maantiedon taitosi!</h3>
-        <p>
-          Visassa on viisi kysymystä ja neljä vastausvaihtoehtoa, joista yksi on oikein. Vastaamisen jälkeen et voi enää vaihtaa vastausta ja saat heti tietää, oliko vastauksesi oikein vai väärin.
-          Visan lopuksi saat perustelun oikeista vastauksista. Onnea visaan!
-        </p>
-        <i id="next" class="fas fa-arrow-right fa-3x"></i>
+        <div id="quiz">
+          Visassa on viisi kysymystä ja neljä vastausvaihtoehtoa, joista yksi on oikein. Vastaamisen jälkeen et voi enää vaihtaa vastausta. Visan lopuksi saat tiedon pisteistäsi sekä perustelun oikeista vastauksista. Onnea visaan!
+        </div>
+        <h2 id="testHeader"></h2>
+        <button id="next"><i class="fas fa-arrow-right fa-3x" onclick=myQuiz()></i></button>
       </div>
       <footer class="text-center">
         <hr />
