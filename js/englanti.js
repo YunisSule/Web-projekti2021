@@ -1,5 +1,4 @@
 // luodaan muuttujat visaa varten
-let guests = [];
 let pos = 0;
 let testing, test_status, question, choice, choices, chA, chB, chC, chD;
 let correct = 0;
@@ -51,8 +50,7 @@ let questions = [
   function get(x) {
     return document.getElementById(x);
     }
-    // Piilotetaan visan kysymykset ja vastaukset
-    questions.hide();
+   
     // funktio, jossa tehdään kysymykset ja tekstit sivulle.
     function allQuestion() {
       document.querySelector('#form').classList = "hiding";
@@ -61,7 +59,7 @@ let questions = [
         if(pos >= questions.length) {
             document.getElementById("testing").innerHTML = "<h2>Sait " + correct +" / "+questions.length+" oikein</h2>";
             document.getElementById("test_status").innerHTML = "Testi valmis!";
-            document.querySelector('#next').classList = "hiding";
+            document.querySelector("#next").classList = "hiding"
             // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
             if(correct == 5) {
               document.getElementById("test_status").innerHTML = "Hienoa! Sait kaikki kysymykset oikein!"
@@ -91,7 +89,7 @@ let questions = [
         testing.innerHTML += "<label> <input type='radio' name='choices' value='B'> "+chB+"</label><br>";
         testing.innerHTML += "<label> <input type='radio' name='choices' value='C'> "+chC+"</label><br>";
         testing.innerHTML += "<label> <input type='radio' name='choices' value='D'> "+chD+"</label><br>";
-        testing.innerHTML += "<button onclick='checkAnswer() id='next'"
+        testing.innerHTML += "<button onclick='checkanswer()'"
         
     }
     // funktio, jossa tarkastetaan onko vastaus oikein
@@ -111,5 +109,4 @@ let questions = [
         allQuestion();
     }
     
-   
-  window.addEventListener("load", allQuestion);
+  
