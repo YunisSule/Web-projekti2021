@@ -50,16 +50,22 @@ let questions = [
   function get(x) {
     return document.getElementById(x);
     }
-   
+    // piilotetaan etusivulta nappi, joka vaihtaa seuraavaa visaa.
+    next2.classList.add("hiding");
     // funktio, jossa tehdään kysymykset ja tekstit sivulle.
     function allQuestion() {
+      // kun visa on alkanut, piilotetaan etusivun nimipalkki sekä aloitusnappi.
       form.classList.add("hiding");
       form2.classList.add("hiding");
+      next.classList.add("hiding");
+      // tuodaan visan kysymyksiä vaihtava nappi takaisin näkyville, kun visa on alkanut
+      next2.classList.remove("hiding");
         testing = get("testing");
         if(pos >= questions.length) {
             document.getElementById("testing").innerHTML = "<h2>Sait " + correct +" / "+questions.length+" oikein</h2>";
             document.getElementById("test_status").innerHTML = "Testi valmis!";
-            next.classList.add("hiding");
+            next2.classList.add("hiding");
+            
             // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
             if(correct == 5) {
               document.getElementById("test_status").innerHTML = "Hienoa! Sait kaikki kysymykset oikein!"
@@ -75,6 +81,7 @@ let questions = [
             correct = 0;
             return false;
         }
+        
         document.getElementById("test_status").innerHTML = "Kysymys "+[pos+1]+" / "+questions.length;
 
         question = questions[pos].question;
@@ -83,17 +90,18 @@ let questions = [
         chC = questions[pos].c;
         chD = questions[pos].d;
 
+        // laitetaan sivulle kysymys näkyviin
         document.getElementById("testing").innerHTML = "<h3>"+question+"</h3>";
-        // tehdään visaan valintavaihtoehdot
-        testing.innerHTML += "<label> <input type='radio' name='choices' value='A'> "+chA+"</label><br>";
-        testing.innerHTML += "<label> <input type='radio' name='choices' value='B'> "+chB+"</label><br>";
-        testing.innerHTML += "<label> <input type='radio' name='choices' value='C'> "+chC+"</label><br>";
-        testing.innerHTML += "<label> <input type='radio' name='choices' value='D'> "+chD+"</label><br>";
-        testing.innerHTML += "<button onclick='checkanswer()'"
+        // tehdään visaan valintavaihtoehdot ja laitetaan ne näkyville.
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='A'> "+chA+"</label><br>";
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='B'> "+chB+"</label><br>";
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='C'> "+chC+"</label><br>";
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='D'> "+chD+"</label><br>";
         
+       
     }
+    
     // funktio, jossa tarkastetaan onko vastaus oikein
-
     function checkAnswer(){
         choices = document.getElementsByName("choices");
         for(let i=0; i < choices.length; i++){
@@ -102,11 +110,13 @@ let questions = [
             }
         }
         if(choice == questions[pos].answer) {
+          // jos vastaus on oikein, lopussa näkyvien oikeiden vastausten määrä kasvaa.
             correct++;
         }
         pos++;
 
         allQuestion();
+        
     }
     
   

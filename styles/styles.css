@@ -18,6 +18,7 @@ body {
 /* STYLES FOR QUIZ PAGES 
 ADD YOUR OWN STYLING HERE */
 
+/*English quiz styling begins*/
 #englanti {
   display: inline-block;
   background-color: rgb(226, 255, 238);
@@ -29,9 +30,13 @@ ADD YOUR OWN STYLING HERE */
    display: none;
  }
  
+ #next2 {
+  float: right;
+  margin: 10px;
+ }
 
+/* English quiz styling ends*/
 
-/* English quiz styling*/
 #matikka {
   background-color: rgb(228, 245, 255);
   display: inline-block;
