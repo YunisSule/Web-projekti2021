@@ -47,6 +47,8 @@ let questions = [
     }
   ];
     
+  let correctAnswers = "Kysymys 1: Oikea vastaus oli B eli hirvi. <p> Kysymys 2: Oikea vastaus oli C eli Man <p> Kysymys 3: Oikea vastaus oli D eli pakastin <p> Kysymys 4: Oikea vastaus oli C eli tulla joksikin <p> Kysymys 5: Oikea vastaus oli A eli papukaija"
+
   function get(x) {
     return document.getElementById(x);
     }
@@ -65,19 +67,25 @@ let questions = [
         if(positive >= questions.length) {
             document.getElementById("testing").innerHTML = "<h2>Sait " + correct +" / "+questions.length+" oikein</h2>";
             document.getElementById("test_status").innerHTML = "Testi valmis!";
+            if(correct == questions.length) {
+              document.getElementById("test_status").innerHTML =  "Testi valmis!";
+            }
+            else {
+              document.getElementById("rightAnswers").innerHTML = correctAnswers
+            }
             // piilotetaan lopusta nappi
             next2.classList.add("hiding");
             
             
             // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
             if(correct == 5) {
-              document.getElementById("test_status").innerHTML = "Hienoa! Sait kaikki kysymykset oikein!"
+              document.getElementById("feedback").innerHTML = "Hienoa! Sait kaikki kysymykset oikein!"
             }
             if(correct == 1 || correct == 2) {
-              document.getElementById("test_status").innerHTML = "Ohhoh! Testi olisi voinut mennä paremminkin. Kokeile uudelleen?"
+              document.getElementById("feedback").innerHTML = "Testi olisi voinut mennä paremminkin. Alhaalla näet oikeat vastaukset kysymyksiin."
             }
             if(correct == 3 || correct == 4) {
-              document.getElementById("test_status").innerHTML = "Sait pisteitä ihan hyvin! Voit olla ylpeä itsestäsi!"
+              document.getElementById("feedback").innerHTML = "Sait pisteitä ihan hyvin! Voit olla ylpeä itsestäsi! Alta näet oikeat vastaukset."
             }
 
             
@@ -100,6 +108,7 @@ let questions = [
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='C'> "+chC+"</label><br>";
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='D'> "+chD+"</label><br>";
         
+        
        
     }
     
@@ -109,8 +118,11 @@ let questions = [
         for(let i=0; i < choices.length; i++){
             if(choices[i].checked) {
               choice = choices[i].value;
-              correct++;
+              
             }
+        }
+        if(choice == questions[positive].answer){
+          correct++;
         }
         
         positive++;
