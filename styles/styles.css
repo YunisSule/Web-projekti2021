@@ -1,3 +1,7 @@
+body {
+  font-family: 'Shippori Antique B1';
+}
+
 #content {
   display: inline-block;
   background-color: rgb(228, 245, 255);
@@ -35,7 +39,34 @@ ADD YOUR OWN STYLING HERE */
   display: inline-block;
 }
 
+/* PAATTELYTEHTAVA STYLES */
+
 #paattelytehtava {
   background-color: rgb(228, 245, 255);
   display: inline-block;
 }
+
+#paattelytehtava > button {
+  background: none;
+  border: none;
+}
+
+#paattelytehtava > button:hover {
+  color: green;
+}
+
+.hideElement {
+  display: none;
+}
+
+#answers {
+  list-style: none;
+}
+
+#claims {
+  padding: 0;
+}
+#answers input {
+  margin-left: -1.2rem;
+}
+/* PAATTELYTEHTAVA STYLES */

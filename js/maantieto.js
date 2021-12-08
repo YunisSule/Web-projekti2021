@@ -42,7 +42,7 @@ let questions = [
             c: "Monaco",
             d: "Portugali",
         answer: "A",
-        explanation: "Vatikaani, koska se on pinta-alaltaan vain huimat 44 hehtaaria (eli noin 440000 m2)."
+        explanation: "Vatikaani, koska se on pinta-alaltaan vain 44 hehtaaria (eli noin 440000 m2)."
     },
 
     {
@@ -52,10 +52,10 @@ let questions = [
             c: "Kiina",
             d: "Venäjä",
         answer: "D",
-        explanation: "Venäjä, sillä se on pinta-alaltaan huimat 17 075 400 neliökilometriä."
+        explanation: "Venäjä, sillä se on pinta-alaltaan 17 075 400 neliökilomertiä."
     }
 ];
-//olio väärä väärille kysymyksille ja väärien kysymyksien tulostamiseen methodi toString
+//olio väärä väärille kysymyksille ja väärien kysymyksien tulostamiseen metodi toString
 class Wrong{
     constructor(right, questionNumber){
         this.right = right;
@@ -76,10 +76,11 @@ function get(x) {
 function myQuiz(){
     quiz = get("quiz");
     quiz.innerHTML = "";
-    //jos kohta visassa on suurempi kuin kysymyksien listan pituus (=> visa on suoritettu/kysymykset on käyty läpi) 
-    //tulostaa sivulle tulokset visasta, eikä yritä enään tulostaa kysymyksiä listasta
-    //kohdista mitä ei ole listassa
+    /*jos kohta visassa on suurempi kuin kysymyksien listan pituus (=> visa on suoritettu/kysymykset on käyty läpi) 
+    tulostaa sivulle tulokset visasta, eikä yritä enään tulostaa kysymyksiä listasta
+    kohdista mitä ei ole listassa*/
     if(position >= questions.length){
+        document.getElementById("next").style.visibility = 'visible';
         quiz.innerHTML = "<h2>Sait " +correct+" / "+questions.length+" kysymystä oikein</h2>";
         get("testHeader").innerHTML = "Visa suoritettu!<br>";
         //looppaa aikaisemmin tehdyn listan vääristä vastauksista läpi sekä tulostaa väärien vastauksien oikeat vastaukset
@@ -105,7 +106,8 @@ function myQuiz(){
     quiz.innerHTML += "<label> <input type='radio' name='choices' value='B'> "+choiceB+"</label><br>";
     quiz.innerHTML += "<label> <input type='radio' name='choices' value='C'> "+choiceC+"</label><br>";
     quiz.innerHTML += "<label> <input type='radio' name='choices' value='D'> "+choiceD+"</label><br><br>";
-    quiz.innerHTML += "<button onclick='checkAnswer()'>Tallenna kysymys</button>";
+    quiz.innerHTML += "<button onclick='checkAnswer()'>Tallenna vastaus</button>";
+    document.getElementById("next").style.visibility = 'hidden';
 }
 //tarkistaa onko vastaus oikein vai väärin
 function checkAnswer(){
