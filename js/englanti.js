@@ -1,5 +1,5 @@
 // luodaan muuttujat visaa varten
-let pos = 0;
+let positive = 0;
 let testing, test_status, question, choice, choices, chA, chB, chC, chD;
 let correct = 0;
 
@@ -15,11 +15,11 @@ let questions = [
     },
   {
       question: "Mikä on mies englanniksi?",
-      a: "Man",
+      a: "Women",
       b: "Men",
-      c: "Women",
+      c: "Man",
       d:"Wimen",
-      answer: "A"
+      answer: "C"
     },
   {
       question: "Mikä on freezer?",
@@ -39,11 +39,11 @@ let questions = [
     },
     {
       question: "Mikä on parrot?",
-      a: "Käki",
-      b: "Papukaija",
+      a: "Papukaija",
+      b: "Käki",
       c: "Tikka",
       d:"Pulu",
-      answer: "B"
+      answer: "A"
     }
   ];
     
@@ -61,34 +61,34 @@ let questions = [
       // tuodaan visan kysymyksiä vaihtava nappi takaisin näkyville, kun visa on alkanut
       next2.classList.remove("hiding");
         testing = get("testing");
-        if(pos >= questions.length) {
+        if(positive >= questions.length) {
             document.getElementById("testing").innerHTML = "<h2>Sait " + correct +" / "+questions.length+" oikein</h2>";
             document.getElementById("test_status").innerHTML = "Testi valmis!";
-            next2.classList.add("hiding");
+            
             
             // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
             if(correct == 5) {
               document.getElementById("test_status").innerHTML = "Hienoa! Sait kaikki kysymykset oikein!"
             }
             if(correct == 1 || correct == 2) {
-              document.getElementById("test_status").innerHTML = "Testi olisi voinut mennä paremminkin. Kokeile uudelleen?"
+              document.getElementById("test_status").innerHTML = "Ohhoh! Testi olisi voinut mennä paremminkin. Kokeile uudelleen?"
             }
             if(correct == 3 || correct == 4) {
               document.getElementById("test_status").innerHTML = "Sait pisteitä ihan hyvin! Voit olla ylpeä itsestäsi!"
             }
 
-            pos = 0;
+            positive = 0;
             correct = 0;
             return false;
         }
         
-        document.getElementById("test_status").innerHTML = "Kysymys "+[pos+1]+" / "+questions.length;
+        document.getElementById("test_status").innerHTML = "Kysymys "+[positive+1]+" / "+questions.length;
 
-        question = questions[pos].question;
-        chA = questions[pos].a;
-        chB = questions[pos].b;
-        chC = questions[pos].c;
-        chD = questions[pos].d;
+        question = questions[positive].question;
+        chA = questions[positive].a;
+        chB = questions[positive].b;
+        chC = questions[positive].c;
+        chD = questions[positive].d;
 
         // laitetaan sivulle kysymys näkyviin
         document.getElementById("testing").innerHTML = "<h3>"+question+"</h3>";
@@ -107,13 +107,11 @@ let questions = [
         for(let i=0; i < choices.length; i++){
             if(choices[i].checked) {
               choice = choices[i].value;
+              correct++;
             }
         }
-        if(choice == questions[pos].answer) {
-          // jos vastaus on oikein, lopussa näkyvien oikeiden vastausten määrä kasvaa.
-            correct++;
-        }
-        pos++;
+        
+        positive++;
 
         allQuestion();
         
