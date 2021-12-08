@@ -85,7 +85,7 @@ function myQuiz(){
     kohdista mitä ei ole listassa*/
     if(position >= questions.length){
         document.getElementById("header").innerHTML = "Visa suoritettu!";
-        quiz.innerHTML = "<h2>Sait " +correct+" / "+questions.length+" kysymystä oikein</h2>";
+        quiz.innerHTML = "<h3>Sait " +correct+" / "+questions.length+" kysymystä oikein</h3>";
         get("testHeader");
         //looppaa aikaisemmin tehdyn listan vääristä vastauksista läpi sekä tulostaa väärien vastauksien oikeat vastaukset
         for(let i = 0; i<wrongAnswers.length; i++){
@@ -95,7 +95,7 @@ function myQuiz(){
 
     }
     //asettaa tekstin alkuun että mones kysymys on menossa
-    get("testHeader").innerHTML = "Kysymys " + (position+1)+ "/" + questions.length + " kysymyksestä";
+    //get("testHeader").innerHTML = "Kysymys " + (position+1)+ "/" + questions.length + " kysymyksestä";
     //asettaa muuttujat kysymykselle sekä sen vaihtoehdoille esim. choiceA == vastausvaihtoehto a, choiceB == vastausvaihtoehto b... jne.
     question = questions[position].question;
     choiceA = questions[position].a;
