@@ -76,13 +76,17 @@ function get(x) {
 function myQuiz(){
     quiz = get("quiz");
     quiz.innerHTML = "";
+    // piilottaa otsikon visan ajaksi
+    document.getElementById("header").innerHTML = "";
+    // piilottaa nuoli-napin, koska sitä ei tarvita
     document.getElementById("next").style.visibility = "hidden";
     /*jos kohta visassa on suurempi kuin kysymyksien listan pituus (=> visa on suoritettu/kysymykset on käyty läpi) 
     tulostaa sivulle tulokset visasta, eikä yritä enään tulostaa kysymyksiä listasta
     kohdista mitä ei ole listassa*/
     if(position >= questions.length){
+        document.getElementById("header").innerHTML = "Visa suoritettu!";
         quiz.innerHTML = "<h2>Sait " +correct+" / "+questions.length+" kysymystä oikein</h2>";
-        get("testHeader").innerHTML = "Visa suoritettu!<br>";
+        get("testHeader");
         //looppaa aikaisemmin tehdyn listan vääristä vastauksista läpi sekä tulostaa väärien vastauksien oikeat vastaukset
         for(let i = 0; i<wrongAnswers.length; i++){
             get("testHeader").innerHTML += wrongAnswers[i].toString() + "<br>";
@@ -92,7 +96,7 @@ function myQuiz(){
     }
     //asettaa tekstin alkuun että mones kysymys on menossa
     get("testHeader").innerHTML = "Kysymys " + (position+1)+ "/" + questions.length + " kysymyksestä";
-    //asettaa muuttujat kysymykselle sekä sen vaihtoehdoille esim. choiceA == vastausvaihtoehto a, choiceB == vastausvaihtoehto b... etc.
+    //asettaa muuttujat kysymykselle sekä sen vaihtoehdoille esim. choiceA == vastausvaihtoehto a, choiceB == vastausvaihtoehto b... jne.
     question = questions[position].question;
     choiceA = questions[position].a;
     choiceB = questions[position].b;
