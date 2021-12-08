@@ -47,9 +47,23 @@ ADD YOUR OWN STYLING HERE */
   display: inline-block;
 }
 
+/* Historia */
+
 #historia {
-  background-color: rgb(228, 245, 255);
+  background-color: rgb(255, 245, 228);
   display: inline-block;
+}
+
+#historia > h3 {
+  padding-bottom: 10px;
+}
+
+#historia > #visa {
+  padding: 10px;
+}
+
+#visa > #vaihtoehto {
+  background-color: lightblue;
 }
 
 /* PAATTELYTEHTAVA STYLES */
