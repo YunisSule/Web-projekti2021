@@ -60,10 +60,13 @@ let questions = [
       next.classList.add("hiding");
       // tuodaan visan kysymyksiä vaihtava nappi takaisin näkyville, kun visa on alkanut
       next2.classList.remove("hiding");
+    
         testing = get("testing");
         if(positive >= questions.length) {
             document.getElementById("testing").innerHTML = "<h2>Sait " + correct +" / "+questions.length+" oikein</h2>";
             document.getElementById("test_status").innerHTML = "Testi valmis!";
+            // piilotetaan lopusta nappi
+            next2.classList.add("hiding");
             
             
             // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
@@ -77,8 +80,7 @@ let questions = [
               document.getElementById("test_status").innerHTML = "Sait pisteitä ihan hyvin! Voit olla ylpeä itsestäsi!"
             }
 
-            positive = 0;
-            correct = 0;
+            
             return false;
         }
         
