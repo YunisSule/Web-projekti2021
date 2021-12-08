@@ -76,21 +76,19 @@ function get(x) {
 function myQuiz(){
     quiz = get("quiz");
     quiz.innerHTML = "";
+    document.getElementById("next").style.visibility = "hidden";
     /*jos kohta visassa on suurempi kuin kysymyksien listan pituus (=> visa on suoritettu/kysymykset on käyty läpi) 
     tulostaa sivulle tulokset visasta, eikä yritä enään tulostaa kysymyksiä listasta
     kohdista mitä ei ole listassa*/
     if(position >= questions.length){
-        document.getElementById("next").style.visibility = 'visible';
         quiz.innerHTML = "<h2>Sait " +correct+" / "+questions.length+" kysymystä oikein</h2>";
         get("testHeader").innerHTML = "Visa suoritettu!<br>";
         //looppaa aikaisemmin tehdyn listan vääristä vastauksista läpi sekä tulostaa väärien vastauksien oikeat vastaukset
         for(let i = 0; i<wrongAnswers.length; i++){
             get("testHeader").innerHTML += wrongAnswers[i].toString() + "<br>";
         }
-        //asettaa arvot takaisin alkuun jotta visan voi suorittaa uudestaan
-        position = 0;
-        correct = 0;
         return false;
+
     }
     //asettaa tekstin alkuun että mones kysymys on menossa
     get("testHeader").innerHTML = "Kysymys " + (position+1)+ "/" + questions.length + " kysymyksestä";
@@ -107,7 +105,6 @@ function myQuiz(){
     quiz.innerHTML += "<label> <input type='radio' name='choices' value='C'> "+choiceC+"</label><br>";
     quiz.innerHTML += "<label> <input type='radio' name='choices' value='D'> "+choiceD+"</label><br><br>";
     quiz.innerHTML += "<button onclick='checkAnswer()'>Tallenna vastaus</button>";
-    document.getElementById("next").style.visibility = 'hidden';
 }
 //tarkistaa onko vastaus oikein vai väärin
 function checkAnswer(){
@@ -119,8 +116,8 @@ function checkAnswer(){
         }
     }
     /*jos valittu vaihtoehto on oikein lisää oikeiden vastausten määrää yhdellä
-    muuten luo uuden "väärä" -olion johon tallennetaan mikä kysymys se oli missä oli väärä vastaus, sekä lisää sen listaan
-    lopuksi lisää position muuttujaa yhdellä jotta vaihtuu kysymys*/
+    muuten luo uuden "väärä" -olion johon tallennetaan mikä kysymys se oli, missä oli väärä vastaus sekä lisää sen listaan.
+    Lopuksi lisää position muuttujaa yhdellä jotta vaihtuu kysymys*/
     if(choice == questions[position].answer){
         correct++;
     }else{
