@@ -114,6 +114,7 @@ function myQuiz(){
 //tarkistaa onko vastaus oikein vai väärin
 function checkAnswer(){
     choices = document.getElementsByName("choices");
+    choice = "";
     //looppaa vaihtoehtojen läpi sekä tarkistaa vastaako valittu vaihtoehto oikeaa vastausta
     for(let i=0;i<choices.length;i++){
         if(choices[i].checked){
