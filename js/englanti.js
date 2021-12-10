@@ -3,7 +3,7 @@ let positive = 0;
 let testing, test_status, question, choice, choices, chA, chB, chC, chD;
 let correct = 0;
 
-
+// lisätään next napille uusi kuuntelija, joka lisää henkilön nimen sivulle h2 elementtiin.
 document.querySelector("#next").addEventListener("click", addName)
 let pname = document.getElementById("form");
 let divForName = document.querySelector("#pname");
@@ -11,7 +11,7 @@ let divForName = document.querySelector("#pname");
 function addName() {
   let h2 = document.createElement("h2");
    h2.textContent = pname.value;
-   // lisätään uusi elementti bodyn sisälle
+   // lisätään uusi elementti divin sisälle
    divForName.append(h2);
 }
 
@@ -83,7 +83,7 @@ let questions = [
             document.getElementById("test_status").innerHTML = "Testi valmis"
             // tehdään if, jossa annetaan vastaus perustuen käyttäjän saamiin oikeisiin vastauksiin.
             if(correct == questions.length) {
-              document.getElementById("test_status").innerHTML =  "Testi valmis!";
+              document.getElementById("feedback").innerHTML =  "Hienoa! Sait kaikki kysymykset oikein!";
             }
             else {
               document.getElementById("rightAnswers").innerHTML = correctAnswers
@@ -93,14 +93,12 @@ let questions = [
             divForName.classList.remove("hiding");
             
             // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
-            if(correct == 5) {
-              document.getElementById("test_status").innerHTML = "Hienoa! Sait kaikki kysymykset oikein!"
-            }
+            
             if(correct == 1 || correct == 2) {
-              document.getElementById("test_status").innerHTML = "Testi olisi voinut mennä paremminkin. Alhaalla näet oikeat vastaukset kysymyksiin."
+              document.getElementById("feedback").innerHTML = "Testi olisi voinut mennä paremminkin. Alhaalla näet oikeat vastaukset kysymyksiin."
             }
             if(correct == 3 || correct == 4) {
-              document.getElementById("test_status").innerHTML = "Sait pisteitä ihan hyvin! Voit olla ylpeä itsestäsi! Alta näet oikeat vastaukset."
+              document.getElementById("feedback").innerHTML = "Sait pisteitä ihan hyvin! Voit olla ylpeä itsestäsi! Alta näet oikeat vastaukset."
             }
 
             
