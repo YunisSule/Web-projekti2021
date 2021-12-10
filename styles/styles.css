@@ -34,9 +34,10 @@ ADD YOUR OWN STYLING HERE */
   float: right;
   margin: 10px;
  }
- #englanti > #feedback {
+ #rightAnswers {
+   
    padding: 10px;
-   font-size:x-large;
+   
  }
 
 /* English quiz styling ends*/
