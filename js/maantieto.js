@@ -1,3 +1,4 @@
+// katsottu mallia: https://www.codemahal.com/video/javascript-quiz-tutorial/
 //position on kohta visassa, correct on montako oikeaa vastausta, quiz, quiz_status ja muut liittyy kysymyksiin.
 let position = 0;
 let correct = 0;
