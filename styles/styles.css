@@ -33,20 +33,26 @@ ADD YOUR OWN STYLING HERE */
  #next2 {
   float: right;
   margin: 10px;
+ 
  }
+
  #rightAnswers {
-   
-   padding: 10px;
-   
+   padding: 10px; 
  }
 
  #rightQuestions {
   margin: 10px;
    
  }
-#rightQuiz {
-  margin: 10px;
-}
+  #englanti > button {
+    margin: 10px;
+    border: none;
+    background: none;
+  }
+  #next3 {
+    margin: 10px;
+    
+  }
 
 /* English quiz styling ends*/
 

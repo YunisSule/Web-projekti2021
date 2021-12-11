@@ -16,6 +16,7 @@ function addName() {
 }
 
 
+
 // tehdään kysymykset ja vastaukset visaan
 let questions = [
   {
@@ -65,7 +66,8 @@ let questions = [
   function get(x) {
     return document.getElementById(x);
     }
-    rightQuiz.classList.add("hiding");
+
+    
     divForName.classList.add("hiding");
     // piilotetaan etusivulta nappi, joka vaihtaa seuraavaa visaa.
     next2.classList.add("hiding");
@@ -92,7 +94,6 @@ let questions = [
             // piilotetaan lopusta nappi
             next2.classList.add("hiding");
             divForName.classList.remove("hiding");
-            rightQuiz.classList.add("hiding");
             
             // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
            
@@ -124,7 +125,7 @@ let questions = [
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='B'> "+chB+"</label><br>";
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='C'> "+chC+"</label><br>";
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='D'> "+chD+"</label><br>";
-        rightQuiz.classList.remove("hiding");
+        document.getElementById("testing").innerHTML += "<button onclick='rightAnswer()' id='next3'>Tarkista</button>"
     }
 
     
