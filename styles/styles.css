@@ -34,6 +34,11 @@ ADD YOUR OWN STYLING HERE */
   float: right;
   margin: 10px;
  }
+ #rightAnswers {
+   
+   padding: 10px;
+   
+ }
 
 /* English quiz styling ends*/
 
@@ -43,7 +48,7 @@ ADD YOUR OWN STYLING HERE */
 }
 
 #maantieto {
-  background-color: rgb(144, 238, 144);
+  background-color: #F9FCCA;
   display: inline-block;
 }
 
