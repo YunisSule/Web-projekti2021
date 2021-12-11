@@ -92,6 +92,7 @@ let questions = [
             // piilotetaan lopusta nappi
             next2.classList.add("hiding");
             divForName.classList.remove("hiding");
+            rightQuiz.classList.add("hiding");
             
             // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
            

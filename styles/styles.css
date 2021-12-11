@@ -40,6 +40,15 @@ ADD YOUR OWN STYLING HERE */
    
  }
 
+ #rightQuestions {
+  margin: 10px;
+   
+ }
+
+ button {
+  margin: 10px;
+ }
+
 /* English quiz styling ends*/
 
 /* Matikka quiz styling */
