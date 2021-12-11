@@ -1,6 +1,6 @@
 // luodaan muuttujat visaa varten
 let positive = 0;
-let testing, test_status, question, choice, choices, chA, chB, chC, chD;
+let testing, test_status, question, choice, choices, choices2, chA, chB, chC, chD;
 let correct = 0;
 
 // lisätään next napille uusi kuuntelija, joka lisää henkilön nimen sivulle h2 elementtiin.
@@ -59,9 +59,9 @@ let questions = [
       answer: "A"
     }
   ];
-    
+
   let correctAnswers = "Kysymys 1: Oikea vastaus oli B eli hirvi." + "<p>" + "Kysymys 2: Oikea vastaus oli C eli Man." + "<p>" + "Kysymys 3: Oikea vastaus oli D eli pakastin." +"<p>" + "Kysymys 4: Oikea vastaus oli C eli tulla joksikin. " +"<p>"+ " Kysymys 5: Oikea vastaus oli A eli papukaija."
- 
+  
   function get(x) {
     return document.getElementById(x);
     }
@@ -80,20 +80,20 @@ let questions = [
         testing = get("testing");
         if(positive >= questions.length) {
             document.getElementById("testing").innerHTML = "<h2>Sait " + correct +" / "+questions.length+" oikein</h2>";
-            document.getElementById("test_status").innerHTML = "Testi valmis"
+            document.getElementById("test_status").innerHTML = "";
             // tehdään if, jossa annetaan vastaus perustuen käyttäjän saamiin oikeisiin vastauksiin.
             if(correct == questions.length) {
               document.getElementById("feedback").innerHTML =  "Hienoa! Sait kaikki kysymykset oikein!";
             }
             else {
-              document.getElementById("rightAnswers").innerHTML = correctAnswers
+              document.getElementById("rightQuestions").innerHTML = correctAnswers
             }
             // piilotetaan lopusta nappi
             next2.classList.add("hiding");
             divForName.classList.remove("hiding");
             
             // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
-            
+           
             if(correct == 1 || correct == 2) {
               document.getElementById("feedback").innerHTML = "Testi olisi voinut mennä paremminkin. Alhaalla näet oikeat vastaukset kysymyksiin."
             }
@@ -108,6 +108,7 @@ let questions = [
         document.getElementById("test_status").innerHTML = "Kysymys "+[positive+1]+" / "+questions.length;
         // näyttää vastausvaihtoehdot sivulla
         question = questions[positive].question;
+
         chA = questions[positive].a;
         chB = questions[positive].b;
         chC = questions[positive].c;
@@ -115,17 +116,18 @@ let questions = [
 
         // laitetaan sivulle kysymys näkyviin
         document.getElementById("testing").innerHTML = "<h3>"+question+"</h3>";
+        
         // tehdään visaan valintavaihtoehdot ja laitetaan ne näkyville.
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='A'> "+chA+"</label><br>";
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='B'> "+chB+"</label><br>";
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='C'> "+chC+"</label><br>";
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='D'> "+chD+"</label><br>";
-        
-        
-       
+        document.getElementById("testing").innerHTML += "<button onclick='rightAnswer()'>Tarkista</button>"
     }
+
     
     // funktio, jossa tarkastetaan onko vastaus oikein
+
     function checkAnswer(){
         choices = document.getElementsByName("choices");
         for(let i=0; i < choices.length; i++){
@@ -137,12 +139,32 @@ let questions = [
         // jos vastaus on oikein, lisätään correctin määrää.
         if(choice == questions[positive].answer){
           correct++;
+          
         }
         choice = "";
         positive++;
+        document.getElementById("feedback").innerHTML = "";
         // allQuestion funktio alkaa uudelleen ja näyttää seuraavan kysymyksen
         allQuestion();
+      }      
+
+      function rightAnswer() {
+        // tehdään uusi samanlainen for looppi, jossa käydään oikea vastaus läpi.
+        choices2 = document.getElementsByName("choices");
+        for(let i=0; i < choices2.length; i++){
+            if(choices2[i].checked) {
+              choice = choices2[i].value;
+              
+            }
+        }
+        // vastauksen perusteella, käyttäjä saa viestin onko vastaus oikein vai väärin.
+        if(choice == questions[positive].answer){
+          document.getElementById("feedback").innerHTML = "vastaus oli oikein!"
+         
+        }
+        else {
+          document.getElementById("feedback").innerHTML = "vastaus oli väärin"
+      
+        }
         
-    }
-    
-  
+      }
