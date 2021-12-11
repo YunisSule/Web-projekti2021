@@ -65,6 +65,7 @@ let questions = [
   function get(x) {
     return document.getElementById(x);
     }
+    rightQuiz.classList.add("hiding");
     divForName.classList.add("hiding");
     // piilotetaan etusivulta nappi, joka vaihtaa seuraavaa visaa.
     next2.classList.add("hiding");
@@ -122,12 +123,12 @@ let questions = [
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='B'> "+chB+"</label><br>";
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='C'> "+chC+"</label><br>";
         document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='D'> "+chD+"</label><br>";
-        document.getElementById("testing").innerHTML += "<button onclick='rightAnswer()'>Tarkista</button>"
+        rightQuiz.classList.remove("hiding");
     }
 
     
     // funktio, jossa tarkastetaan onko vastaus oikein
-
+    
     function checkAnswer(){
         choices = document.getElementsByName("choices");
         for(let i=0; i < choices.length; i++){
