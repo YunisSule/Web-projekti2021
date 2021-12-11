@@ -1,14 +1,10 @@
-//Kentät tyhjennetään kun sivu päivitetään:
-document.getElementById("taskOne").value = "";
-document.getElementById("taskTwo").value = "";
-document.getElementById("taskThree").value = "";
-document.getElementById("taskFour").value = "";
-document.getElementById("taskFive").value = "";
-
 // Numerogeneraattori, jota käytetään tehtävien numeroiden hakuun:
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
+
+//Myöhemmin käytettävä laskuri
+let taskCounter = 0;
 
 //Tehdään muuttujat, joihin voidaan tallentaa laskujen arvo myöhemmin.
 let taskOneAnswer = "";
@@ -16,6 +12,13 @@ let taskTwoAnswer = "";
 let taskThreeAnswer = "";
 let taskFourAnswer = "";
 let taskFiveAnswer = "";
+
+//Tehdään muuttujat, johon tallennetaan saiko käyttäjä vastauksen oikein.
+let correctOne = 0;
+let correctTwo = 0;
+let correctThree = 0;
+let correctFour = 0;
+let correctFive = 0;
 
 //Tehdään tehtäville kysymykset, joita käytetään tämän javascript-tiedoston sisällä.
 function taskOneQuestion() {
@@ -71,8 +74,8 @@ function taskFourQuestion() {
     let oneNum = getRndInteger(1,10);
     let twoNum = getRndInteger(1,10);
 
-    taskFourAnswer = oneNum * twoNum / 2 + " cm<sup>2</sup>";
-    let fourQuestion = "<br> Mikä on kolmion pinta-ala, kun sen korkeus on " + oneNum + " cm, ja kanta on " + twoNum + " cm?";
+    taskFourAnswer = oneNum * twoNum / 2 + " cm^2";
+    let fourQuestion = "<br> Mikä on kolmion pinta-ala, kun sen korkeus on " + oneNum + " cm, ja kanta on " + twoNum + " cm? Pyöristä ja laita cm^2 loppuun.";
     return fourQuestion;
 }
 
@@ -86,23 +89,6 @@ function taskFiveQuestion() {
     return fiveQuestion;
 }
 
-//Tämä funktio luo kaikki laskut, ja sitä käytetään html-sivulla. 
-function tasks() {
-    /*  Html-tiedoston "container" luokka on laitettu piilottamaan tehtävät, laitetaan ne näkyviin.
-        Samalla piilotetaan "Aloita Tehtävä"-painike & muutetaan tekstiä paragraphin sisällä. */
-    document.getElementById("container").className = "container";
-    document.getElementById("startTask").className = "d-none";
-    document.getElementById("taskExplaination").innerHTML = "Kun olet tehnyt yhden tehtävän, paina 'Valmis'-painiketta, " + 
-    "jotta näet saamasi pisteet. Kun kaikki tehtävät on tehty, näet kokonaispistemääräsi.";
-
-    //Laskujen laittaminen sivulle:
-    document.getElementById("taskOneQuestion").innerHTML = taskOneQuestion();
-    document.getElementById("taskTwoQuestion").innerHTML = taskTwoQuestion();
-    document.getElementById("taskThreeQuestion").innerHTML = taskThreeQuestion();
-    document.getElementById("taskFourQuestion").innerHTML = taskFourQuestion();
-    document.getElementById("taskFiveQuestion").innerHTML = taskFiveQuestion();
-}
-
 //Tehdään tulosviesteille muuttujat.
 let answer = "<br> <u>Vastaus:</u> ";
 let correct = ". Vastauksesi oli oikein!"
@@ -111,50 +97,114 @@ let incorrect = ". Vastauksesi oli väärin."
 //Funktiot jotka palautetaan kun henkilö lähettää vastauksen.
 function oneAnswer() {
     let answerOne = "";
-    if (document.getElementById("taskOne").value == taskOneAnswer) {
+    if (document.getElementById("answerValue").value == taskOneAnswer) {
         answerOne = correct;
+        correctOne = 1;
     } else {
         answerOne = incorrect;
     }
-    document.getElementById("taskOneResult").innerHTML = answer + taskOneAnswer + answerOne;
+    let questionAnswer = answer + taskOneAnswer + answerOne;
+    return questionAnswer;
 }
 
 function twoAnswer() {
     let answerTwo = "";
-    if (document.getElementById("taskTwo").value == taskTwoAnswer) {
+    if (document.getElementById("answerValue").value == taskTwoAnswer) {
         answerTwo = correct;
+        correctTwo = 1;
     } else {
         answerTwo = incorrect;
     }
-    document.getElementById("taskTwoResult").innerHTML = answer + taskTwoAnswer + answerTwo;
+    let questionAnswer = answer + taskTwoAnswer + answerTwo;
+    return questionAnswer;
 }
 
 function threeAnswer() {
     let answerThree = "";
-    if (document.getElementById("taskThree").value == taskThreeAnswer) {
+    if (document.getElementById("answerValue").value == taskThreeAnswer) {
         answerThree = correct;
+        correctThree = 1;
     } else {
         answerThree = incorrect;
     }
-    document.getElementById("taskThreeResult").innerHTML = answer + taskThreeAnswer + answerThree;
+    let questionAnswer = answer + taskThreeAnswer + answerThree;
+    return questionAnswer;
 }
 
 function fourAnswer() {
     let answerFour = "";
-    if (document.getElementById("taskFour").value == taskFourAnswer) {
+    if (document.getElementById("answerValue").value == taskFourAnswer) {
         answerFour = correct;
+        correctFour = 1;
     } else {
         answerFour = incorrect;
     }
-    document.getElementById("taskFourResult").innerHTML = answer + taskFourAnswer + answerFour;
+    let questionAnswer = answer + taskFourAnswer + answerFour;
+    return questionAnswer;
 }
 
 function fiveAnswer() {
     let answerFive = "";
-    if (document.getElementById("taskFive").value == taskFiveAnswer) {
+    if (document.getElementById("answerValue").value == taskFiveAnswer) {
         answerFive = correct;
+        correctFive = 1;
     } else {
         answerFive = incorrect;
     }
-    document.getElementById("taskFiveResult").innerHTML = answer + taskFiveAnswer + answerFive;
+    let questionAnswer = answer + taskFiveAnswer + answerFive;
+    return questionAnswer;
+}
+
+/*  Tehdään array yllä olevista funktioista, jotta kysymyksen palauttaman arvon saa helposti käyttöön. 
+    Vastausten array laitetaan myöhempään*/
+let questions = [taskOneQuestion(), taskTwoQuestion(), taskThreeQuestion(), taskFourQuestion(), taskFiveQuestion()];
+
+
+
+//Tämä funktio luo kaikki laskut, ja sitä käytetään html-sivulla. 
+function tasks() {
+    /*  Html-tiedoston "container" luokka on laitettu piilottamaan tehtävät, laitetaan ne näkyviin.
+        Samalla piilotetaan "Aloita Tehtävä"-painike & muutetaan tekstiä paragraphin sisällä. */
+    document.getElementById("container").className = "container";
+    document.getElementById("startTask").className = "d-none";
+    document.getElementById("taskExplaination").innerHTML = "Paina nuolta oikeassa alakulmassa " + 
+    "jotta saat seuraavan tehtävän näkyviin. Kun kaikki tehtävät on tehty, näet kokonaispistemääräsi.";
+
+    //laitetaan myös ensimmäinen tehtävä esille
+    document.getElementById("taskNumber").innerHTML = "Tehtävä " + 1 + ":";
+    document.getElementById("question").innerHTML = questions[0];
+}
+
+//Seuraavan laskun laittaminen sivulle:
+function nextTask() {
+    taskCounter++;
+    document.getElementById("answer").innerHTML = "";
+    document.getElementById("taskNumber").innerHTML = "";
+    document.getElementById("question").innerHTML = "";
+
+    if (taskCounter < 5) {
+        document.getElementById("taskNumber").innerHTML = "Tehtävä " + (1 + taskCounter) + ":";
+        document.getElementById("question").innerHTML = questions[taskCounter];
+    } else if (taskCounter == 5) {
+        let correctCounter = correctOne + correctTwo + correctThree + correctFour + correctFive;
+        document.getElementById("button").className = "d-none";
+        document.getElementById("taskExplaination").innerHTML = "Palaute:";
+        document.getElementById("final").innerHTML = correctCounter + "/5 tehtävää oikein.";
+        if (correctCounter < 3) {
+            document.getElementById("final").innerHTML += " Huono tulos."
+        } else if (correctCounter == 3) {
+            document.getElementById("final").innerHTML += " Tyydyttävä tulos."
+        } else if (correctCounter == 4) {
+            document.getElementById("final").innerHTML += " Hyvä tulos."
+        } else {
+            document.getElementById("final").innerHTML += " Täydellinen tulos."
+        }
+    }
+}
+
+//Tarkistaa vastauksen kun käyttäjä painaa "lähetä"-painiketta
+function returnAnswer() {
+    //Laitoin vastausten arrayn tänne, jotta vastausfunktiot tarkistavat syötetyn arvon kun käyttäjä lähettää vastauksen.
+    let answers = [oneAnswer(), twoAnswer(), threeAnswer(), fourAnswer(), fiveAnswer()];
+    document.getElementById("answer").innerHTML = answers[taskCounter];
 }
