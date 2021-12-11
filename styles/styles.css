@@ -79,6 +79,10 @@ ADD YOUR OWN STYLING HERE */
   display: inline-block;
 }
 
+#maantieto {
+  text-align: center;
+}
+
 /* Historia */
 
 #historia {
