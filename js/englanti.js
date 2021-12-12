@@ -15,8 +15,6 @@ function addName() {
    divForName.append(h2);
 }
 
-
-
 // tehdään kysymykset ja vastaukset visaan
 let questions = [
   {
@@ -121,21 +119,21 @@ let questions = [
         document.getElementById("testing").innerHTML = "<h3>"+question+"</h3>";
         
         // tehdään visaan valintavaihtoehdot ja laitetaan ne näkyville.
-        document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='A'> "+chA+"</label><br>";
-        document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='B'> "+chB+"</label><br>";
-        document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='C'> "+chC+"</label><br>";
-        document.getElementById("testing").innerHTML += "<label> <input type='radio' name='choices' value='D'> "+chD+"</label><br>";
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton1' name='choices' value='A'> "+chA+"</label><br>";
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton2' name='choices' value='B'> "+chB+"</label><br>";
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton3' name='choices' value='C'> "+chC+"</label><br>";
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton4' name='choices' value='D'> "+chD+"</label><br>";
         document.getElementById("testing").innerHTML += "<button onclick='rightAnswer()' id='next3'>Tarkista</button>"
     }
 
     
     // funktio, jossa tarkastetaan onko vastaus oikein
-    
     function checkAnswer(){
         choices = document.getElementsByName("choices");
         for(let i=0; i < choices.length; i++){
             if(choices[i].checked) {
               choice = choices[i].value;
+              
               
             }
         }
@@ -158,16 +156,26 @@ let questions = [
             if(choices2[i].checked) {
               choice = choices2[i].value;
               
+              
             }
         }
         // vastauksen perusteella, käyttäjä saa viestin onko vastaus oikein vai väärin.
         if(choice == questions[positive].answer){
-          document.getElementById("feedback").innerHTML = "vastaus oli oikein!"
+          document.getElementById("feedback").innerHTML = "Vastaus oikein!"
+          
          
         }
         else {
-          document.getElementById("feedback").innerHTML = "vastaus oli väärin"
+          document.getElementById("feedback").innerHTML = "Vastaus väärin!"
       
         }
+        // piilotetaan tarkista nappi sekä radio buttonit tarkista nappia painaessa, jotta käyttäjä ei voi vaihtaa vastausta.
+        next3.classList.add("hiding");
+        radioButton1.classList.add("hiding");
+        radioButton2.classList.add("hiding");
+        radioButton3.classList.add("hiding");
+        radioButton4.classList.add("hiding");
+       
         
       }
+     
