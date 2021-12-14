@@ -93,6 +93,29 @@ function myQuiz(){
         for(let i = 0; i<wrongAnswers.length; i++){
             get("testHeader").innerHTML += wrongAnswers[i].toString() + "<br>";
         }
+
+        //Lisätään kuva visualisoimaan lopputulosta. Luodaan kuva ja tallennetaan se muuttujaan ja määritetään sille korkeus ja leveys.
+        let image = document.createElement("img");
+        image.src = "../images/sademoji.png";
+        let src = document.getElementById("image");
+        image.style.height = "200px";
+        image.style.width = "200px";
+
+        let image2 = document.createElement("img");
+        image2.src = "../images/happyemoji.png";
+        let src2 = document.getElementById("image2");
+        image2.style.height = "200px";
+        image2.style.width = "200px";
+
+        //Antaa palautetta käyttäjälle, kun visa on suoritettu ja lisää kuvan riippuen käyttäjän saamasta tuloksesta.
+        if(correct == 1 || correct == 2 || correct == 3) {
+            src.appendChild(image);
+            document.getElementById("input").innerHTML = "Pystyt parempaan, yritä visaa uudelleeen.";
+        } else if (correct == 4 || correct == 5){
+            src2.appendChild(image2);
+            document.getElementById("input").innerHTML = "Pärjäsit visassa loistavasti, hienoa!";
+        }
+        
         return false;
 
     }
@@ -104,7 +127,7 @@ function myQuiz(){
     choiceB = questions[position].b;
     choiceC = questions[position].c;
     choiceD = questions[position].d
-    //asettaa diviin "quiz" kysymsen sekä sen vaihtoehdot rivien vaihtojen kanssa
+    //asettaa diviin "quiz" kysymyksen sekä sen vaihtoehdot rivien vaihtojen kanssa
     quiz.innerHTML = "<h3>" +question+"</h3>";
     quiz.innerHTML += "<label> <input type='radio' name='choices' value='A'> "+choiceA+"</label><br>";
     quiz.innerHTML += "<label> <input type='radio' name='choices' value='B'> "+choiceB+"</label><br>";
