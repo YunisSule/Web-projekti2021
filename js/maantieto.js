@@ -108,10 +108,10 @@ function myQuiz(){
         image2.style.width = "200px";
 
         //Antaa palautetta käyttäjälle, kun visa on suoritettu ja lisää kuvan riippuen käyttäjän saamasta tuloksesta.
-        if(correct == 1 || correct == 2 || correct == 3) {
+        if(correct < 4) {
             src.appendChild(image);
             document.getElementById("input").innerHTML = "Pystyt parempaan, yritä visaa uudelleeen.";
-        } else if (correct == 4 || correct == 5){
+        } else if (correct >= 4){
             src2.appendChild(image2);
             document.getElementById("input").innerHTML = "Pärjäsit visassa loistavasti, hienoa!";
         }
@@ -161,25 +161,4 @@ function checkAnswer(){
 
     position++;
     myQuiz();
-}
-
-
-    function submitAnswer() {
-    let radios = document.getElementsByName("choices");
-    let val = "";
-    for(let i=0, length=radios.length; i < length; i++ ){
-        if(radios[i].checked){
-            val = radios[i].value;
-            break;
-        }
-
-        if( val == "") {
-            alert("valitse vastaus");
-        } else if (val=="7") {
-            alert("oikea vastaus");
-        } else {
-            alert("väärä vastaust");
-        }
-    }
-
 }
