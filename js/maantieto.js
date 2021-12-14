@@ -116,11 +116,13 @@ function myQuiz(){
             document.getElementById("input").innerHTML = "Pärjäsit visassa loistavasti, hienoa!";
         }
         
+        
+
         return false;
 
     }
     //asettaa tekstin alkuun että mones kysymys on menossa
-    //get("testHeader").innerHTML = "Kysymys " + (position+1)+ "/" + questions.length + " kysymyksestä";
+    get("question-prog").innerHTML = "Kysymys " + (position+1)+ "/" + questions.length + " kysymyksestä";
     //asettaa muuttujat kysymykselle sekä sen vaihtoehdoille esim. choiceA == vastausvaihtoehto a, choiceB == vastausvaihtoehto b... jne.
     question = questions[position].question;
     choiceA = questions[position].a;
@@ -138,6 +140,8 @@ function myQuiz(){
 //tarkistaa onko vastaus oikein vai väärin
 function checkAnswer(){
     choices = document.getElementsByName("choices");
+    // Tyhjentää käyttäjän edistymisen, kun tulokset esitetään
+    document.getElementById("question-prog").innerHTML = "";
     choice = "";
     //looppaa vaihtoehtojen läpi sekä tarkistaa vastaako valittu vaihtoehto oikeaa vastausta
     for(let i=0;i<choices.length;i++){
@@ -157,4 +161,25 @@ function checkAnswer(){
 
     position++;
     myQuiz();
+}
+
+
+    function submitAnswer() {
+    let radios = document.getElementsByName("choices");
+    let val = "";
+    for(let i=0, length=radios.length; i < length; i++ ){
+        if(radios[i].checked){
+            val = radios[i].value;
+            break;
+        }
+
+        if( val == "") {
+            alert("valitse vastaus");
+        } else if (val=="7") {
+            alert("oikea vastaus");
+        } else {
+            alert("väärä vastaust");
+        }
+    }
+
 }
