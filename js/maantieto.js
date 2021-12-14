@@ -77,8 +77,9 @@ function get(x) {
 function myQuiz(){
     quiz = get("quiz");
     quiz.innerHTML = "";
-    // piilottaa otsikon visan ajaksi
+    // piilottaa otsikon ja osallistujan nimi-kentän visan ajaksi
     document.getElementById("header").innerHTML = "";
+    document.getElementById("hide").innerHTML  = "";
     // piilottaa nuoli-napin, koska sitä ei tarvita
     document.getElementById("next").style.visibility = "hidden";
     /*jos kohta visassa on suurempi kuin kysymyksien listan pituus (=> visa on suoritettu/kysymykset on käyty läpi) 
