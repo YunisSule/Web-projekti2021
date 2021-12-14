@@ -45,6 +45,8 @@
           </div>
         </ul>
       </div>
+
+      <!-- content -->
       <div class="container border border-primary mt-4" id="matikka">
         <div class="mb-3 p-4">
           <label for="formGroupExampleInput" class="form-label">Osallistujan nimi</label>
@@ -52,72 +54,31 @@
         </div>
         <h3 class="text-center">Testaa matikan laskutaitosi!</h3>
         <p id="taskExplaination">Tässä tehtäväpaketissa on erilaisia matematiikan tehtäviä, joiden vaikeusaste kasvaa. Kun olet tehnyt yhden tehtävän, paina "Valmis"-painiketta jotta näet saamasi pisteet. Kun kaikki tehtävät on tehty, näet kokonaispistemääräsi. Testaa osaamistasi! Aloita painamalla painiketta "Aloita tehtävä".</p>
-        <div class="row justify-content-center" id="startTask">
+        <div class="row justify-content-center pb-3" id="startTask">
           <div class="col-auto">
-            <input type="button" value="Aloita Tehtävä" onclick="tasks()" />
+            <button type="button" class="btn btn-primary" onclick="tasks()">Aloita Tehtävä</button>
           </div>
         </div>
 
         <div class="container d-none" id="container">
-          <div class="row align-items-center">
+          <div class="row row-cols-1 align-items-center">
             <div class="col">
-              <p>Tehtävä 1: <span id="taskOneQuestion"></span> <span id="taskOneResult"></span></p>
+              <p><span id="taskNumber"></span> <span id="question"></span> <span id="answer"></span> <span id="final"></span></p>
             </div>
-            <div class="col">
-              <input type="text" name="taskOne" id="taskOne" />
-              <input type="button" value="Lähetä" onclick="oneAnswer();" />
+            <div class="col-xl-6 col-lg-8 col-md-12">
+              <div id="button" class="input-group">
+                <input id="answerValue" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <button type="button" class="btn btn-primary" onclick="returnAnswer()">Lähetä</button>
+              </div>
             </div>
-          </div>
-
-          <div class="row align-items-center">
-            <div class="col">
-              <p>Tehtävä 2: <span id="taskTwoQuestion"></span> <span id="taskTwoResult"></span></p>
-            </div>
-            <div class="col">
-              <input type="text" name="taskTwo" id="taskTwo" />
-              <input type="button" value="Lähetä" onclick="twoAnswer();" />
-            </div>
-          </div>
-
-          <div class="row align-items-center">
-            <div class="col">
-              <p>Tehtävä 3: <span id="taskThreeQuestion"></span> <span id="taskThreeResult"></span></p>
-            </div>
-            <div class="col">
-              <input type="text" name="taskThree" id="taskThree" />
-              <input type="button" value="Lähetä" onclick="threeAnswer();" />
-            </div>
-          </div>
-
-          <div class="row align-items-center">
-            <div class="col">
-              <p>Tehtävä 4: <span id="taskFourQuestion"></span> <span id="taskFourResult"></span></p>
-            </div>
-            <div class="col">
-              <input type="text" name="taskFour" id="taskFour" />
-              <input type="button" value="Lähetä" onclick="fourAnswer();" />
-            </div>
-          </div>
-
-          <div class="row align-items-center">
-            <div class="col">
-              <p>Tehtävä 5: <span id="taskFiveQuestion"></span> <span id="taskFiveResult"></span></p>
-            </div>
-            <div class="col">
-              <input class="" type="text" name="taskFive" id="taskFive" />
-              <input type="button" value="Lähetä" onclick="fiveAnswer();" />
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col">
-              <p id="results"></p>
+            <div id="matikka">
+              <button id="next"><i class="fas fa-arrow-right fa-3x" onclick=nextTask()></i></button>
             </div>
           </div>
         </div>
-
-        <i id="next" class="fas fa-arrow-right fa-3x"></i>
       </div>
+
+      <!-- footer -->
       <footer class="text-center">
         <hr />
         <p>&copy; ryhmä 9</p>
