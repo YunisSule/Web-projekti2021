@@ -34,16 +34,49 @@ ADD YOUR OWN STYLING HERE */
   margin: 10px;
 }
 
+#rightAnswers {
+  padding: 10px;
+}
+
+#rightQuestions {
+  margin: 10px;
+}
+#englanti > button {
+  margin: 10px;
+  border: none;
+  background: none;
+}
+#next3 {
+  margin: 10px;
+}
+
 /* English quiz styling ends*/
+
+/* Matikka quiz styling */
 
 #matikka {
   background-color: rgb(228, 245, 255);
   display: inline-block;
 }
 
+#matikka > button {
+  background: none;
+  border: none;
+}
+
+#matikka > button:hover {
+  color: blue;
+}
+
+/* Matikka quiz styling ends*/
+
 #maantieto {
-  background-color: rgb(144, 238, 144);
+  background-color: #f9fcca;
   display: inline-block;
+}
+
+#maantieto {
+  text-align: center;
 }
 
 /* Historia */
@@ -54,6 +87,7 @@ ADD YOUR OWN STYLING HERE */
 }
 
 #historia > h3 {
+  padding-top: 15px;
   padding-bottom: 10px;
 }
 
@@ -61,8 +95,53 @@ ADD YOUR OWN STYLING HERE */
   padding: 10px;
 }
 
-#visa > #vaihtoehto {
-  background-color: lightblue;
+#historia > #next {
+  padding: 2px;
+  border: 1px solid transparent;
+}
+
+#historia > #next:hover {
+  border: 1px solid black;
+  background-color: white;
+}
+
+#visa > .vaihtoehto {
+  background-color: white;
+  padding: 5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+#visa > .oikein {
+  background-color: rgb(228, 255, 228);
+  font-weight: 500;
+}
+
+#visa > .ei-oikein {
+  background-color: rgb(255, 228, 228);
+  font-style: italic;
+}
+
+#visa > .perustelu,
+p {
+  margin-top: 25px;
+  margin-bottom: 7px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+#visa > o {
+  text-align: center;
+}
+
+#visa > .vaihtoehto:hover {
+  background-color: rgb(228, 245, 255);
+}
+
+#visa > .progress {
+  margin-bottom: 25px;
 }
 
 /* PAATTELYTEHTAVA STYLES */
