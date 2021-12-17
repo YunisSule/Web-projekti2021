@@ -24,35 +24,27 @@ ADD YOUR OWN STYLING HERE */
   background-color: rgb(226, 255, 238);
   padding: 10px;
   text-align: center;
-  
 }
- .hiding {
-   display: none;
- }
- 
- #next2 {
+.hiding {
+  display: none;
+}
+
+#next2 {
   float: right;
   margin: 10px;
- 
- }
+}
 
- #rightAnswers {
-   padding: 10px; 
- }
-
- #rightQuestions {
+#rightQuestions {
   margin: 10px;
-   
- }
-  #englanti > button {
-    margin: 10px;
-    border: none;
-    background: none;
-  }
-  #next3 {
-    margin: 10px;
-    
-  }
+}
+#englanti > button {
+  margin: 10px;
+  border: none;
+  background: none;
+}
+#next3 {
+  margin: 10px;
+}
 
 /* English quiz styling ends*/
 
@@ -75,7 +67,7 @@ ADD YOUR OWN STYLING HERE */
 /* Matikka quiz styling ends*/
 
 #maantieto {
-  background-color: #F9FCCA;
+  background-color: #f9fcca;
   display: inline-block;
 }
 
@@ -127,9 +119,8 @@ ADD YOUR OWN STYLING HERE */
   font-style: italic;
 }
 
-#visa > .perustelu, p {
-  padding-left: 5px;
-  padding-right: 5px;
+#visa > .perustelu,
+p {
   margin-top: 25px;
   margin-left: 25px;
   margin-right: 25px;
@@ -152,28 +143,30 @@ ADD YOUR OWN STYLING HERE */
 #paattelytehtava {
   background-color: rgb(228, 245, 255);
   display: inline-block;
+  box-shadow: 2px 2px 5px 0px #ccc;
+}
+.button {
+  float: right;
+  margin: 10px;
 }
 
-#paattelytehtava > button {
-  background: none;
-  border: none;
+#text {
+  max-width: 50em;
+  margin-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#paattelytehtava > button:hover {
-  color: green;
-}
-
-.hideElement {
-  display: none;
+.hide-element {
+  display: none !important;
 }
 
 #answers {
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
-#claims {
-  padding: 0;
-}
 #answers input {
   margin-left: -1.2rem;
 }

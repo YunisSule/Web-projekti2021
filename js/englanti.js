@@ -1,18 +1,18 @@
 // luodaan muuttujat visaa varten
 let positive = 0;
-let testing, test_status, question, choice, choices, choices2, chA, chB, chC, chD;
+let testing, test_status, question, choice, choices, correctOne, choice_A, choice_B, choice_C, choice_D;
 let correct = 0;
 
 // lisätään next napille uusi kuuntelija, joka lisää henkilön nimen sivulle h2 elementtiin.
 document.querySelector("#next").addEventListener("click", addName)
-let pname = document.getElementById("form");
-let divForName = document.querySelector("#pname");
+let quest_name = document.getElementById("form");
+let divForName = document.querySelector("#person_name");
 
 function addName() {
-  let h2 = document.createElement("h2");
-   h2.textContent = pname.value;
+  let header_2 = document.createElement("h2");
+   header_2.textContent = quest_name.value;
    // lisätään uusi elementti divin sisälle
-   divForName.append(h2);
+   divForName.append(header_2);
 }
 
 // tehdään kysymykset ja vastaukset visaan
@@ -23,7 +23,8 @@ let questions = [
       b: "Moose",
       c: "Reindeer",
       d: "Bear",
-      answer: "B"
+      answer: "B",
+      correctOne: "Vastaukseksi oli väärin! oikea vastaus on Moose"
     },
   {
       question: "Mikä on mies englanniksi?",
@@ -31,7 +32,8 @@ let questions = [
       b: "Men",
       c: "Man",
       d:"Wimen",
-      answer: "C"
+      answer: "C",
+      correctOne: "Vastauksesi oli väärin! oikea vastaus on Man"
     },
   {
       question: "Mikä on freezer?",
@@ -39,7 +41,8 @@ let questions = [
       b: "Laatikko",
       c: "Kaappi",
       d: "Pakastin",
-      answer: "D"
+      answer: "D",
+      correctOne: "Vastaukseksi oli väärin! oikea vastaus on Pakastin"
     },
   {
       question: "Mitä tarkoittaa sana 'become'?",
@@ -47,7 +50,8 @@ let questions = [
       b: "Mennä jonnekkin",
       c: "Tulla joksikin",
       d: "Palata",
-      answer: "C"
+      answer: "C",
+      correctOne: "Vastaukseksi oli väärin! Oikea vastaus on Tulla joksikin"
     },
     {
       question: "Mikä on parrot?",
@@ -55,88 +59,86 @@ let questions = [
       b: "Käki",
       c: "Tikka",
       d:"Pulu",
-      answer: "A"
+      answer: "A",
+      correctOne: "Vastauksesi oli väärin! Oikea vastaus on Papukaija"
     }
   ];
 
-  let correctAnswers = "Kysymys 1: Oikea vastaus oli B eli hirvi." + "<p>" + "Kysymys 2: Oikea vastaus oli C eli Man." + "<p>" + "Kysymys 3: Oikea vastaus oli D eli pakastin." +"<p>" + "Kysymys 4: Oikea vastaus oli C eli tulla joksikin. " +"<p>"+ " Kysymys 5: Oikea vastaus oli A eli papukaija."
-  
   function get(x) {
     return document.getElementById(x);
     }
 
-    
+    // piilotetaan sivuilta nappi sekä henkilön nimi
     divForName.classList.add("hiding");
-    // piilotetaan etusivulta nappi, joka vaihtaa seuraavaa visaa.
     next2.classList.add("hiding");
+
     // funktio, jossa tehdään kysymykset ja tekstit sivulle.
-    function allQuestion() {
+    function allQuestions() {
+      
       // kun visa on alkanut, piilotetaan etusivun nimipalkki sekä aloitusnappi.
       form.classList.add("hiding");
       form2.classList.add("hiding");
       next.classList.add("hiding");
       // tuodaan visan kysymyksiä vaihtava nappi takaisin näkyville, kun visa on alkanut
       next2.classList.remove("hiding");
-    
+
         testing = get("testing");
+        // tehdään if lauseke, jossa tulostetaan sivulle visan lopputulos
         if(positive >= questions.length) {
-            document.getElementById("testing").innerHTML = "<h2>Sait " + correct +" / "+questions.length+" oikein</h2>";
+            document.getElementById("testing").innerHTML =  "<h2>Sait " + correct +" / "+questions.length+" oikein</h2>";
             document.getElementById("test_status").innerHTML = "";
-            // tehdään if, jossa annetaan vastaus perustuen käyttäjän saamiin oikeisiin vastauksiin.
+            // tehdään if lauseke, jossa annetaan vastaus perustuen käyttäjän saamiin oikeisiin vastauksiin.
             if(correct == questions.length) {
-              document.getElementById("feedback").innerHTML =  "Hienoa! Sait kaikki kysymykset oikein!";
+              document.getElementById("feedback").innerHTML = "Hienoa! Sait kaikki kysymykset oikein!";
+            }
+            else if(correct == 0 || correct == 1 || correct == 2) {
+              document.getElementById("feedback").innerHTML = "Voi ei! Testi olisi voinut mennä paremminkin! entä jos kokeilisit uudelleen?"
             }
             else {
-              document.getElementById("rightQuestions").innerHTML = correctAnswers
-            }
-            // piilotetaan lopusta nappi
-            next2.classList.add("hiding");
-            divForName.classList.remove("hiding");
-            
-            // Jos osallistujalla on tietyn verran vastauksia oikein, saa hän palautteen.
-           
-            if(correct == 1 || correct == 2) {
-              document.getElementById("feedback").innerHTML = "Testi olisi voinut mennä paremminkin. Alhaalla näet oikeat vastaukset kysymyksiin."
-            }
-            if(correct == 3 || correct == 4) {
-              document.getElementById("feedback").innerHTML = "Sait pisteitä ihan hyvin! Voit olla ylpeä itsestäsi! Alta näet oikeat vastaukset."
+              document.getElementById("feedback").innerHTML = "Sait pisteitä ihan hyvin!"
             }
 
-            
+            // piilotetaan lopusta nappi sekä laitetaan visaa tekevän henkilön nimi näkyviin.
+            next2.classList.add("hiding");
+            divForName.classList.remove("hiding");
+
             return false;
         }
         
         document.getElementById("test_status").innerHTML = "Kysymys "+[positive+1]+" / "+questions.length;
-        // näyttää vastausvaihtoehdot sivulla
+        next2.classList.add("hiding");
+        
+        // näytetään vastausvaihtoehdot sivulla ja tulostetaan kysymys näkyviin sivulle.
         question = questions[positive].question;
+        choice_A = questions[positive].a;
+        choice_B = questions[positive].b;
+        choice_C = questions[positive].c;
+        choice_D = questions[positive].d;
 
-        chA = questions[positive].a;
-        chB = questions[positive].b;
-        chC = questions[positive].c;
-        chD = questions[positive].d;
-
-        // laitetaan sivulle kysymys näkyviin
-        document.getElementById("testing").innerHTML = "<h3>"+question+"</h3>";
+        document.getElementById("testing").innerHTML = "<h4>"+question+"</h4>";
         
         // tehdään visaan valintavaihtoehdot ja laitetaan ne näkyville.
-        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton1' name='choices' value='A'> "+chA+"</label><br>";
-        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton2' name='choices' value='B'> "+chB+"</label><br>";
-        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton3' name='choices' value='C'> "+chC+"</label><br>";
-        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton4' name='choices' value='D'> "+chD+"</label><br>";
-        document.getElementById("testing").innerHTML += "<button onclick='rightAnswer()' id='next3'>Tarkista</button>"
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton1' name='choices' value='A'> "+choice_A+"</label><br>";
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton2' name='choices' value='B'> "+choice_B+"</label><br>";
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton3' name='choices' value='C'> "+choice_C+"</label><br>";
+        document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton4' name='choices' value='D'> "+choice_D+"</label><br>";
+        document.getElementById("testing").innerHTML += "<button onclick='showRightAnswer()' id='next3'>Tarkista</button>"
     }
-
     
-    // funktio, jossa tarkastetaan onko vastaus oikein
-    function checkAnswer(){
-        choices = document.getElementsByName("choices");
-        for(let i=0; i < choices.length; i++){
-            if(choices[i].checked) {
-              choice = choices[i].value;
-              
-              
-            }
+    // Tarkistetaan onko käyttäjän vastaus oikein.
+    function correctQuestion() {
+      
+    question_choices = document.getElementsByName("choices");
+    for(let i=0; i < question_choices.length; i++){
+        if(question_choices[i].checked) {
+          choice = question_choices[i].value;
+          
+          
         }
+    }
+    }
+    function checkAnswer() {
+      correctQuestion();
         // jos vastaus on oikein, lisätään correctin määrää.
         if(choice == questions[positive].answer){
           correct++;
@@ -144,31 +146,24 @@ let questions = [
         }
         choice = "";
         positive++;
-        document.getElementById("feedback").innerHTML = "";
+        document.getElementById("rightQuestions").innerHTML = "";
         // allQuestion funktio alkaa uudelleen ja näyttää seuraavan kysymyksen
-        allQuestion();
+        allQuestions()
+       
       }      
+     
+      function showRightAnswer() {
+        //vastauksen perusteella, käyttäjä saa viestin onko vastaus oikein vai väärin.
+        next2.classList.remove("hiding");
+        correctQuestion();
 
-      function rightAnswer() {
-        // tehdään uusi samanlainen for looppi, jossa käydään oikea vastaus läpi.
-        choices2 = document.getElementsByName("choices");
-        for(let i=0; i < choices2.length; i++){
-            if(choices2[i].checked) {
-              choice = choices2[i].value;
-              
-              
-            }
-        }
-        // vastauksen perusteella, käyttäjä saa viestin onko vastaus oikein vai väärin.
         if(choice == questions[positive].answer){
-          document.getElementById("feedback").innerHTML = "Vastaus oikein!"
-          
-         
+          document.getElementById("rightQuestions").innerHTML = "Vastaus oikein!"
         }
         else {
-          document.getElementById("feedback").innerHTML = "Vastaus väärin!"
-      
+          document.getElementById("rightQuestions").innerHTML = questions[positive].correctOne;
         }
+
         // piilotetaan tarkista nappi sekä radio buttonit tarkista nappia painaessa, jotta käyttäjä ei voi vaihtaa vastausta.
         next3.classList.add("hiding");
         radioButton1.classList.add("hiding");
@@ -176,6 +171,5 @@ let questions = [
         radioButton3.classList.add("hiding");
         radioButton4.classList.add("hiding");
        
-        
       }
      
