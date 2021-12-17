@@ -48,6 +48,10 @@ ADD YOUR OWN STYLING HERE */
 #next3 {
   margin: 10px;
 }
+#englanti > #next:hover {
+  color: green;
+
+}
 
 /* English quiz styling ends*/
 
