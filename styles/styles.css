@@ -59,12 +59,7 @@ ADD YOUR OWN STYLING HERE */
   display: inline-block;
 }
 
-#matikka > button {
-  background: none;
-  border: none;
-}
-
-#matikka > button:hover {
+#next:hover {
   color: blue;
 }
 
