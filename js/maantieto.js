@@ -73,6 +73,7 @@ let wrongAnswers = [];
 function get(x) {
     return document.getElementById(x);
 }
+
 //luo kysymykset selaimeen
 function myQuiz(){
     quiz = get("quiz");
@@ -92,7 +93,7 @@ function myQuiz(){
         //looppaa aikaisemmin tehdyn listan vääristä vastauksista läpi sekä tulostaa väärien vastauksien oikeat vastaukset
         for(let i = 0; i<wrongAnswers.length; i++){
             get("testHeader").innerHTML += wrongAnswers[i].toString() + "<br>";
-        }
+        } 
 
         //Lisätään kuva visualisoimaan lopputulosta. Luodaan kuva ja tallennetaan se muuttujaan ja määritetään sille korkeus ja leveys.
         let image = document.createElement("img");
@@ -110,10 +111,10 @@ function myQuiz(){
         //Antaa palautetta käyttäjälle, kun visa on suoritettu ja lisää kuvan riippuen käyttäjän saamasta tuloksesta.
         if(correct < 4) {
             src.appendChild(image);
-            document.getElementById("input").innerHTML = "Pystyt parempaan, yritä visaa uudelleen.";
+            document.getElementById("input").innerHTML = `Pystyt parempaan ${user}, yritä visaa uudelleen.`;
         } else if (correct >= 4){
             src2.appendChild(image2);
-            document.getElementById("input").innerHTML = "Pärjäsit visassa loistavasti, hienoa!";
+            document.getElementById("input").innerHTML = `Pärjäsit visassa loistavasti ${user}, hienoa!`;
         }
         
          return false;
