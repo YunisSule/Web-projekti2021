@@ -98,8 +98,8 @@ function taskFiveQuestion() {
 
 //Tehdään tulosviesteille muuttujat.
 let answer = "<br> <u>Vastaus:</u> ";
-let correct = ". Vastauksesi oli oikein!"
-let incorrect = ". Vastauksesi oli väärin."
+let correct = ". Vastauksesi oli oikein!";
+let incorrect = ". Vastauksesi oli väärin.";
 
 //Funktiot jotka palautetaan kun henkilö lähettää vastauksen.
 function oneAnswer() {
@@ -196,9 +196,14 @@ function nextTask() {
     
     } else if (taskCounter == 5) {
         let correctCounter = correctOne + correctTwo + correctThree + correctFour + correctFive;
+        //muokataan viimeisen sivun ulkonäköä
+        document.getElementsByTagName("div")[4].className = "d-none";
         document.getElementById("button").className = "d-none";
         document.getElementById("next").className = "d-none";
-        document.getElementById("taskExplaination").innerHTML = "Palaute:";
+        document.getElementById("taskExplaination").className = "d-none";
+        document.getElementsByTagName("h3")[0].innerHTML = "Palaute:";
+        document.getElementsByTagName("h3")[0].style.cssText = "margin:0.5em;";
+        document.getElementsByTagName("p")[1].style.cssText += "width:20em; display:block; margin:auto; text-align:center;";
         //tarkistetaan tehtävän tekevän nimi tässä vaiheessa
         if (document.getElementById("formGroupExampleInput").value != "") {
             participantName = document.getElementById("formGroupExampleInput").value;
@@ -209,21 +214,25 @@ function nextTask() {
         document.getElementById("final").innerHTML = participantName + "<br>" + correctCounter + "/5 tehtävää oikein.";
 
         if (correctCounter < 3) {
-            document.getElementById("final").innerHTML += " Välttävä tulos."
+            document.getElementById("final").innerHTML += " Välttävä tulos.";
+            document.getElementById("imageMatikka").src = "../images/thumbs-down.png";
         } else if (correctCounter == 3) {
-            document.getElementById("final").innerHTML += " Tyydyttävä tulos."
+            document.getElementById("final").innerHTML += " Tyydyttävä tulos.";
+            document.getElementById("imageMatikka").src = "../images/boredom.png";
         } else if (correctCounter == 4) {
-            document.getElementById("final").innerHTML += " Hyvä tulos."
+            document.getElementById("final").innerHTML += " Hyvä tulos.";
+            document.getElementById("imageMatikka").src = "../images/thumbs-up.png";
         } else {
-            document.getElementById("final").innerHTML += " Täydellinen tulos."
+            document.getElementById("final").innerHTML += " Täydellinen tulos.";
+            document.getElementById("imageMatikka").src = "../images/thumbs-up.png";
         }
     }
 
     //Lisään vastauskenttään vastauksen loppuosan automaattisesti
     if (taskCounter == 3) {
-        document.getElementById("answerValue").value = " cm^2"
+        document.getElementById("answerValue").value = " cm^2";
     } else if (taskCounter == 4) {
-        document.getElementById("answerValue").value = " cm"
+        document.getElementById("answerValue").value = " cm";
     }
 }
 

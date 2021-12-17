@@ -67,6 +67,12 @@ ADD YOUR OWN STYLING HERE */
   padding-bottom: 1em;
 }
 
+#imageMatikka {
+  width: 20em;
+  display: block;
+  margin: auto;
+}
+
 /* Matikka quiz styling ends*/
 
 #maantieto {
