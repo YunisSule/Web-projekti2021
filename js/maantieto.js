@@ -116,9 +116,7 @@ function myQuiz(){
             document.getElementById("input").innerHTML = "Pärjäsit visassa loistavasti, hienoa!";
         }
         
-        
-
-        return false;
+         return false;
 
     }
     //asettaa tekstin alkuun että mones kysymys on menossa
