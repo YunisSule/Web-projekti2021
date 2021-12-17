@@ -3,11 +3,8 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-//korjaa tämä nimi vielä
-/*let participantName = "";
-if (taskCounter == 0) {
-    participantName = document.getElementById("formGroupExampleInput").value;
-} */
+//tekijän nimi
+let participantName = document.getElementById("formGroupExampleInput").value;
 
 //Tyhjentää vastauskentän kun sivu päivitetään
 document.getElementById("answerValue").value = "";
@@ -196,12 +193,21 @@ function nextTask() {
     if (taskCounter < 5) {
         document.getElementById("taskNumber").innerHTML = "Tehtävä " + (1 + taskCounter) + ":";
         document.getElementById("question").innerHTML = questions[taskCounter];
+    
     } else if (taskCounter == 5) {
         let correctCounter = correctOne + correctTwo + correctThree + correctFour + correctFive;
         document.getElementById("button").className = "d-none";
         document.getElementById("next").className = "d-none";
         document.getElementById("taskExplaination").innerHTML = "Palaute:";
-        document.getElementById("final").innerHTML = /* participantName */"<br>" + correctCounter + "/5 tehtävää oikein.";
+        //tarkistetaan tehtävän tekevän nimi tässä vaiheessa
+        if (document.getElementById("formGroupExampleInput").value != "") {
+            participantName = document.getElementById("formGroupExampleInput").value;
+        } else {
+            participantName = "";
+        }
+        //laitetaan tekijän nimi + palaute
+        document.getElementById("final").innerHTML = participantName + "<br>" + correctCounter + "/5 tehtävää oikein.";
+
         if (correctCounter < 3) {
             document.getElementById("final").innerHTML += " Välttävä tulos."
         } else if (correctCounter == 3) {
