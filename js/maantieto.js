@@ -96,7 +96,7 @@ function myQuiz(){
 
         //Lisätään kuva visualisoimaan lopputulosta. Luodaan kuva ja tallennetaan se muuttujaan ja määritetään sille korkeus ja leveys.
         let image = document.createElement("img");
-        image.src = "../images/sademoji.png";
+        image.src = "../images/cryingemoji.png";
         let src = document.getElementById("image");
         image.style.height = "200px";
         image.style.width = "200px";
@@ -110,7 +110,7 @@ function myQuiz(){
         //Antaa palautetta käyttäjälle, kun visa on suoritettu ja lisää kuvan riippuen käyttäjän saamasta tuloksesta.
         if(correct < 4) {
             src.appendChild(image);
-            document.getElementById("input").innerHTML = "Pystyt parempaan, yritä visaa uudelleeen.";
+            document.getElementById("input").innerHTML = "Pystyt parempaan, yritä visaa uudelleen.";
         } else if (correct >= 4){
             src2.appendChild(image2);
             document.getElementById("input").innerHTML = "Pärjäsit visassa loistavasti, hienoa!";
