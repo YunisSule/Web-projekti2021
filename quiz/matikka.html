@@ -53,7 +53,7 @@
           <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Etunimi Sukunimi" />
         </div>
         <h3 class="text-center">Testaa matikan laskutaitosi!</h3>
-        <p id="taskExplaination">Tässä tehtäväpaketissa on erilaisia matematiikan tehtäviä, joiden vaikeusaste kasvaa. Kun olet tehnyt yhden tehtävän, paina "Valmis"-painiketta jotta näet saamasi pisteet. Kun kaikki tehtävät on tehty, näet kokonaispistemääräsi. Testaa osaamistasi! Aloita painamalla painiketta "Aloita tehtävä".</p>
+        <p id="taskExplaination">Tässä tehtäväpaketissa on erilaisia matematiikan tehtäviä, joiden vaikeusaste kasvaa. Aloita tekeminen painamalla "Aloita Tehtävä" -painiketta.</p>
         <div class="row justify-content-center pb-3" id="startTask">
           <div class="col-auto">
             <button type="button" class="btn btn-primary" onclick="tasks()">Aloita Tehtävä</button>
@@ -62,7 +62,7 @@
 
         <div class="container d-none" id="container">
           <div class="row row-cols-1 align-items-center">
-            <div class="col">
+            <div id="taskTest" class="col">
               <p><span id="taskNumber"></span> <span id="question"></span> <span id="answer"></span> <span id="final"></span></p>
             </div>
             <div class="col-xl-6 col-lg-8 col-md-12">

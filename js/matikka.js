@@ -3,6 +3,15 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
+//korjaa tämä nimi vielä
+/*let participantName = "";
+if (taskCounter == 0) {
+    participantName = document.getElementById("formGroupExampleInput").value;
+} */
+
+//Tyhjentää vastauskentän kun sivu päivitetään
+document.getElementById("answerValue").value = "";
+
 //Myöhemmin käytettävä laskuri
 let taskCounter = 0;
 
@@ -28,7 +37,8 @@ function taskOneQuestion() {
     let threeNum = getRndInteger(1,10);
     let fourNum = getRndInteger(1,10);
 
-    //Lasketaan vastaus ja tallennetaan arvo js-tiedoston alkuun tehtyyn muuttujaan.
+    /* Lasketaan vastaus ja tallennetaan arvo js-tiedoston alkuun tehtyyn muuttujaan. 
+    Muuttujien arvot funktion sisällä ei muutu, joten niitä voi käyttää useamman kerran */
     taskOneAnswer = oneNum + twoNum - threeNum + fourNum;
 
     //Tehdään lasku ja palautetaan se funktiota kysyvälle. 
@@ -75,17 +85,17 @@ function taskFourQuestion() {
     let twoNum = getRndInteger(1,10);
 
     taskFourAnswer = oneNum * twoNum / 2 + " cm^2";
-    let fourQuestion = "<br> Mikä on kolmion pinta-ala, kun sen korkeus on " + oneNum + " cm, ja kanta on " + twoNum + " cm? Pyöristä ja laita cm^2 loppuun.";
+    let fourQuestion = "<br> Mikä on kolmion pinta-ala, kun sen korkeus on " + oneNum + " cm, ja kanta on " + twoNum + " cm? Pyöristä vastaus. Laskun kaava: a * b / 2";
     return fourQuestion;
 }
 
 function taskFiveQuestion() {
-    let oneNum = getRndInteger(1,10);
-    let twoNum = getRndInteger(1,10);
+    let oneNum = getRndInteger(1,6);
+    let twoNum = getRndInteger(1,6);
 
     taskFiveAnswer = Math.round(Math.sqrt(Math.pow(oneNum,2) + Math.pow(twoNum,2))) + " cm";
     let fiveQuestion = "<br> Suorakulmaisen kolmion kateetit ovat " + oneNum + " cm ja " + twoNum + 
-                       " cm. Laske hypotenuusa ja pyöristä vastaus kokonaisluvuksi.";
+                       " cm. " + "Laske hypotenuusa ja pyöristä vastaus kokonaisluvuksi. Pythagoraan lause: a^2 + b^2 = c^2";
     return fiveQuestion;
 }
 
@@ -181,6 +191,7 @@ function nextTask() {
     document.getElementById("answer").innerHTML = "";
     document.getElementById("taskNumber").innerHTML = "";
     document.getElementById("question").innerHTML = "";
+    document.getElementById("answerValue").value = "";
 
     if (taskCounter < 5) {
         document.getElementById("taskNumber").innerHTML = "Tehtävä " + (1 + taskCounter) + ":";
@@ -188,10 +199,11 @@ function nextTask() {
     } else if (taskCounter == 5) {
         let correctCounter = correctOne + correctTwo + correctThree + correctFour + correctFive;
         document.getElementById("button").className = "d-none";
+        document.getElementById("next").className = "d-none";
         document.getElementById("taskExplaination").innerHTML = "Palaute:";
-        document.getElementById("final").innerHTML = correctCounter + "/5 tehtävää oikein.";
+        document.getElementById("final").innerHTML = /* participantName */"<br>" + correctCounter + "/5 tehtävää oikein.";
         if (correctCounter < 3) {
-            document.getElementById("final").innerHTML += " Huono tulos."
+            document.getElementById("final").innerHTML += " Välttävä tulos."
         } else if (correctCounter == 3) {
             document.getElementById("final").innerHTML += " Tyydyttävä tulos."
         } else if (correctCounter == 4) {
@@ -199,6 +211,13 @@ function nextTask() {
         } else {
             document.getElementById("final").innerHTML += " Täydellinen tulos."
         }
+    }
+
+    //Lisään vastauskenttään vastauksen loppuosan automaattisesti
+    if (taskCounter == 3) {
+        document.getElementById("answerValue").value = " cm^2"
+    } else if (taskCounter == 4) {
+        document.getElementById("answerValue").value = " cm"
     }
 }
 

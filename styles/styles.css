@@ -68,6 +68,10 @@ ADD YOUR OWN STYLING HERE */
   color: blue;
 }
 
+#taskTest {
+  padding-bottom: 1em;
+}
+
 /* Matikka quiz styling ends*/
 
 #maantieto {
