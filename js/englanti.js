@@ -24,7 +24,7 @@ let questions = [
       c: "Reindeer",
       d: "Bear",
       answer: "B",
-      correctOne: "Vastaukseksi oli väärin! oikea vastaus on MOOSE koska dog on koira, reindeer on poro ja bear on karhu."
+      correctOne: "Vastaukseksi oli väärin! oikea vastaus on moose koska dog on koira, reindeer on poro ja bear on karhu."
     },
   {
       question: "Mikä on mies englanniksi?",
@@ -33,7 +33,7 @@ let questions = [
       c: "Man",
       d:"Woman",
       answer: "C",
-      correctOne: "Vastauksesi oli väärin! oikea vastaus on MAN koska women on naiset, woman on nainen ja men on miehet."
+      correctOne: "Vastauksesi oli väärin! oikea vastaus on man koska women on naiset, woman on nainen ja men on miehet."
     },
   {
       question: "Mikä on freezer?",
@@ -42,7 +42,7 @@ let questions = [
       c: "Kaappi",
       d: "Pakastin",
       answer: "D",
-      correctOne: "Vastaukseksi oli väärin! oikea vastaus on PAKASTIN, koska jääkaappi on fridge, laatikko on box ja kaappi on cabinet."
+      correctOne: "Vastaukseksi oli väärin! oikea vastaus on pakastin koska jääkaappi on fridge, laatikko on box ja kaappi on cabinet."
     },
   {
       question: "Mitä tarkoittaa sana 'Awesome'?",
@@ -51,7 +51,7 @@ let questions = [
       c: "Mahtavaa",
       d: "Kiva",
       answer: "C",
-      correctOne: "Vastaukseksi oli väärin! Oikea vastaus on MAHTAVAA koska siistiä on cool, hienoa on great ja kiva on nice. "
+      correctOne: "Vastaukseksi oli väärin! Oikea vastaus on mahtavaa koska siistiä on cool, hienoa on great ja kiva on nice. "
     },
     {
       question: "Mikä on parrot?",
@@ -60,7 +60,7 @@ let questions = [
       c: "Ankka",
       d:"Pulu",
       answer: "A",
-      correctOne: "Vastauksesi oli väärin! Oikea vastaus on PAPUKAIJA koska joutsen on swan, pulu on pidgeon ja ankka on duck."
+      correctOne: "Vastauksesi oli väärin! Oikea vastaus on papukaija koska joutsen on swan, pulu on pidgeon ja ankka on duck."
     }
   ];
 
