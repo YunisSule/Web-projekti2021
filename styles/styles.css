@@ -52,6 +52,9 @@ ADD YOUR OWN STYLING HERE */
   color: green;
 
 }
+#englanti > #next2:hover {
+  color: green;
+}
 
 /* English quiz styling ends*/
 
