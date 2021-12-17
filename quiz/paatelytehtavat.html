@@ -24,7 +24,7 @@
   </head>
   <body>
     <div class="container">
-      <header style="text-align: center"><img src="../images/onlinelearning.png" alt="" style="height: 200px" /></header>
+      <header style="text-align: center"><img src="../images/onlinelearning.png" alt="" style="max-height: 200px; width: 70%; max-width: 687px" /></header>
       <!-- Navbar -->
       <div>
         <ul class="nav nav-tabs navbar-expand-md navbar-light">
@@ -59,14 +59,18 @@
       <div class="container border border-secondary mt-4" id="paattelytehtava">
         <div id="pname" class="mb-3 p-4">
           <label for="formGroupExampleInput" class="form-label">Osallistujan nimi</label>
-          <input id="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Etunimi Sukunimi" />
+          <input id="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Etunimi" />
         </div>
         <h3 id="heading" class="text-center">Testaa päättelytaitosi!</h3>
-        <p id="text"></p>
-        <div id="feedback"></div>
-        <div class="form-check" id="answers"><ol id="claims"></ol></div>
+        <p id="text">
+          Tässä osiossa pääset testaamaan päättelytaitojasi. Aloita visa antamalla nimesi ja painamalla "aloita" -painiketta. Visa sisältää viisi kysymystä, joissa on 2 - 3 väittämää, joiden perusteella sinun tulisi päätellä vastaus. Lue siis väittämät huolella ja mieti vastaustasi rauhassa, kun olet painanut vastausvaihtoehtoa, et voi enään muuttaa sitä ja sinut viedään seuraavaan kysymykseen.
+          Visan päätteeksi saat tietää kuinka suoriuduit. Onena matkaan!
+        </p>
+        <div id="questions"><ol id="claims"></ol></div>
 
-        <button id="next"><i class="fas fa-arrow-right fa-3x"></i></button>
+        <div class="hide-element mb-4" id="answers"></div>
+        <button id="start-button" type="button" class="button btn btn-primary">Aloita</button>
+        <button id="restart" class="button hide-element btn btn-primary">Aloita alusta</button>
       </div>
 
       <!-- Content -->

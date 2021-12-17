@@ -1,163 +1,146 @@
-let participants = [];
-let tasks = [
+let questions = [
   {
-    task: 'Mitä seuraavista väitteistä voi päätellä?',
-    claims: {
-      c1: 'Kaikki tontut pitävät joulusta.',
-      c2: 'Vili on tonttu.'
-    },
-    answers: {
-      a1: 'Vili pitää joulusta.',
-      a2: 'Vili ei pidä joulusta.',
-      a3: 'Ei voi päätellä kumpaakaan.'
-    },
-    correctAnswer: 'Vili pitää joulusta'
+    question: 'Mitä seuraavista väitteistä voi päätellä?',
+    claims: ['Kaikki tontut pitävät joulusta.', 'Vili on tonttu.'],
+    answers: [
+      { answer: 'Vili pitää joulusta.', correct: true },
+      { answer: 'Vili ei pidä joulusta.', correct: false },
+      { answer: 'Ei voi päätellä kumpaakaan.', correct: false }
+    ]
   },
   {
-    task: 'Mitä seuraavista väitteistä voi päätellä?',
-    claims: {
-      c1: 'Kaikki öllöäklöt ovat ällöpellejä.',
-      c2: 'Joku öllöäklö on äiti'
-    },
-    answers: {
-      a1: 'Minun äitini on öllöäklö.',
-      a2: 'Joku ällöpelle on äiti.',
-      a3: 'Ei voi päätellä kumpaakaan.'
-    },
-    correctAnswer: 'Joku ällöpelle on äiti.'
+    question: 'Mitä seuraavista väitteistä voi päätellä?',
+    claims: ['Kaikki öllöäklöt ovat ällöpellejä.', 'Joku öllöäklö on äiti'],
+    answers: [
+      { answer: 'Minun äitini on öllöäklö.', correct: false },
+      { answer: 'Joku ällöpelle on äiti.', correct: true },
+      { answer: 'Ei voi päätellä kumpaakaan.', correct: false }
+    ]
   },
   {
-    task: 'Mitä seuraavista väitteistä voi päätellä?',
-    claims: {
-      c1: 'Jos Miisa on kiltti tai Liisa on vitsikäs, äiti on iloinen.',
-      c2: 'Miisa ei ole kiltti tai äiti ei ole iloinen.'
-    },
-    answers: {
-      a1: 'Liisa on vitsikäs.',
-      a2: 'Liisa ei ole vitsikäs.',
-      a3: 'Ei voi päätellä kumpaakaan.'
-    },
-    correctAnswer: 'Ei voi päätellä kumpaakaan.'
+    question: 'Mitä seuraavista väitteistä voi päätellä?',
+    claims: ['Jos Miisa on kiltti tai Liisa on vitsikäs, äiti on iloinen.', 'Miisa ei ole kiltti tai äiti ei ole iloinen.'],
+    answers: [
+      { answer: 'Liisa on vitsikäs.', correct: false },
+      { answer: 'Liisa ei ole vitsikäs.', correct: false },
+      { answer: 'Ei voi päätellä kumpaakaan.', correct: true }
+    ]
   },
   {
-    task: 'Mitä seuraavista väitteistä voi päätellä?',
-    claims: {
-      c1: 'Kaikilla linnuilla on siivet.',
-      c2: 'Vain siivekkäät osaavat lentää.',
-      c3: 'Pingviini on lintu, mutta se ei osaa lentää.'
-    },
-    answers: {
-      a1: 'Pingviini ei ole siivekäs.',
-      a2: 'Pingviinillä on siivet.',
-      a3: 'Ei voi päätellä kumpaakaan.'
-    },
-    correctAnswer: 'Pingviinillä on siivet.'
+    question: 'Mitä seuraavista väitteistä voi päätellä?',
+    claims: ['Kaikilla linnuilla on siivet.', 'Vain siivekkäät osaavat lentää.', 'Pingviini on lintu, mutta se ei osaa lentää.'],
+    answers: [
+      { answer: 'Pingviini ei ole siivekäs.', correct: false },
+      { answer: 'Pingviinillä on siivet.', correct: true },
+      { answer: 'Ei voi päätellä kumpaakaan.', correct: false }
+    ]
   },
   {
-    task: 'Mitä seuraavista väitteistä voi päätellä?',
-    claims: {
-      c1: 'Jos Mirkku on käynyt koulua, Markku osaa lukea.',
-      c2: 'Jos Markku ei osaa lukea, hän osaa laskea.',
-      c3: 'Mirkku ei ole käynyt koulua.'
-    },
-    answers: {
-      a1: 'Markku ei osaa laskea.',
-      a2: 'Markku osaa laskea.',
-      a3: 'Ei voi päätellä kumpaakaan.'
-    },
-    correctAnswer: 'Ei voi päätellä kumpaakaan.'
+    question: 'Mitä seuraavista väitteistä voi päätellä?',
+    claims: ['Jos Mirkku on käynyt koulua, Markku osaa lukea.', 'Jos Markku ei osaa lukea, hän osaa laskea.', 'Mirkku ei ole käynyt koulua.'],
+    answers: [
+      { answer: 'Markku ei osaa laskea.', correct: false },
+      { answer: 'Markku osaa laskea.', correct: false },
+      { answer: 'Ei voi päätellä kumpaakaan.', correct: true }
+    ]
   }
 ];
+let participant = '';
+let points = 0;
 let i = 0;
 
-let c1 = document.createElement('li');
-let c2 = document.createElement('li');
-let c3 = document.createElement('li');
-let a1 = document.createElement('li');
-let a2 = document.createElement('li');
-let a3 = document.createElement('li');
-let radioL1 = document.createElement('label');
-let radioL2 = document.createElement('label');
-let radioL3 = document.createElement('label');
-let radio1 = document.createElement('input');
-let radio2 = document.createElement('input');
-let radio3 = document.createElement('input');
+document.getElementById('start-button').addEventListener('click', startQuiz);
+document.getElementById('restart').addEventListener('click', () => location.reload());
+let claimsList = document.getElementById('claims');
+let answerButtons = document.getElementById('answers');
 
-document.querySelector('#next').addEventListener('click', addName);
-document.querySelector('#next').addEventListener('click', nextQuestion);
+// START QUIZ
+function startQuiz() {
+  if (document.querySelector('#name').value) {
+    participant = document.querySelector('#name').value;
+  } else {
+    participant = 'Nimetön tyyppi';
+  }
 
-/* ADD NAME AND POINT COINT*/
-
-function addName() {
-  let name = document.querySelector('#name').value;
-
-  let participant = { name: name, points: 0 };
-
-  participants.push(participant);
-
-  console.log(participant);
+  document.getElementById('pname').classList = 'hide-element';
+  document.getElementById('start-button').classList = 'hide-element';
+  nextQuestion();
 }
 
+// NEXT QUESTION
 function nextQuestion() {
-  document.querySelector('#pname').classList = 'hideElement';
+  resetState();
+  document.getElementById('questions').classList.remove('hide-element');
+  document.getElementById('answers').classList.remove('hide-element');
 
   if (i > 4) {
-    document.querySelector('#heading').textContent = 'Palautetta suorituksesta';
-    document.querySelector('#text').textContent = 'Hyvää palautetta, jos pisteet yli 3. Ihan ok suoritus, jos pisteet 3. Olisi voinut mennä paremmin, jos pisteet alle 3 tms.';
-
-    document.querySelector('#claims').classList = 'hideElement';
-    document.querySelector('#answers').classList = 'hideElement';
-    document.querySelector('#next').classList = 'hideElement';
+    feedback();
+    document.getElementById('restart').classList.remove('hide-element');
+    document.getElementById('answers').classList = 'hide-element';
   } else {
-    let claims = tasks[i].claims;
-    let answers = tasks[i].answers;
-
-    //QUESTION
-
-    document.querySelector('#heading').textContent = `Kysymys: ${i + 1}`;
-    document.querySelector('#text').textContent = tasks[i].task;
+    let claims = questions[i].claims;
+    let answers = questions[i].answers;
+    document.getElementById('heading').textContent = `Kysymys: ${i + 1}`;
+    document.getElementById('text').textContent = questions[i].question;
+    document.getElementById('text').classList = 'text-center';
 
     // CLAIMS
+    claims.forEach((element) => {
+      let claim = document.createElement('li');
+      claim.innerText = element;
+      claimsList.appendChild(claim);
+    });
 
-    c1.innerText = claims.c1;
-    c2.innerText = claims.c2;
-    if (claims.c3) {
-      c3.innerText = claims.c3;
-      document.querySelector('#claims').append(c1, c2, c3);
-    } else {
-      document.querySelector('#claims').append(c1, c2);
-    }
+    // ANSWERS
 
-    //ANSWERS
-
-    radio1.setAttribute('type', 'radio');
-    radio2.setAttribute('type', 'radio');
-    radio3.setAttribute('type', 'radio');
-    radio1.setAttribute('class', 'form-check-input');
-    radio2.setAttribute('class', 'form-check-input');
-    radio3.setAttribute('class', 'form-check-input');
-    radio1.setAttribute('id', 'flexRadioDefault1');
-    radio2.setAttribute('id', 'flexRadioDefault2');
-    radio3.setAttribute('id', 'flexRadioDefault3');
-    radio1.setAttribute('name', 'flexRadioDefault');
-    radio2.setAttribute('name', 'flexRadioDefault');
-    radio3.setAttribute('name', 'flexRadioDefault');
-
-    radioL1.setAttribute('class', 'form-check-label');
-    radioL2.setAttribute('class', 'form-check-label');
-    radioL3.setAttribute('class', 'form-check-label');
-
-    radioL1.innerText = answers.a1;
-    radioL2.innerText = answers.a2;
-    radioL3.innerText = answers.a3;
-
-    a1.append(radio1, radioL1);
-    a2.append(radio2, radioL2);
-    a3.append(radio3, radioL3);
-
-    document.querySelector('#answers').append(a1, a2, a3);
-    console.log(i);
+    answers.forEach((element) => {
+      let answer = document.createElement('button');
+      answer.setAttribute('class', 'anwbtn btn btn-outline-primary .btn-block');
+      answer.setAttribute('type', 'button');
+      answer.addEventListener('click', () => {
+        checkAnswer(element.correct);
+        nextQuestion();
+      });
+      answer.innerText = element.answer;
+      answerButtons.appendChild(answer);
+    });
 
     i++;
+  }
+}
+
+// RESET CLAIMS AND ANSWERS
+
+function resetState() {
+  while (claimsList.firstChild) {
+    claimsList.removeChild(claimsList.firstChild);
+  }
+  while (answerButtons.firstChild) {
+    answerButtons.removeChild(answerButtons.firstChild);
+  }
+}
+
+// CHECK IF ANSWER IS CORRECT
+
+function checkAnswer(param) {
+  if (param) {
+    points = points + 1;
+  }
+}
+
+// GIVE FEEDBACK
+
+function feedback() {
+  document.getElementById('questions').classList = 'hide-element';
+  document.getElementById('heading').textContent = 'Palautetta suorituksesta';
+
+  if (points === 0) {
+    document.getElementById('text').textContent = `${participant}, sait ${points} pistettä. Suunta on vain ylöspäin!`;
+  } else if (points < 3) {
+    document.getElementById('text').textContent = `${participant}, sait ${points} pistettä. Luethan tehtävät huolellisemmin seuraavalla kerralla.`;
+  } else if (points > 3 && points < 5) {
+    document.getElementById('text').textContent = `Hineoa ${participant}! Sait ${points} pistettä. Pohdi vastausvaihtoehtoja vielä vähän tarkemmin niin saat varmasti täidet pisteet!`;
+  } else if (points === 5) {
+    document.getElementById('text').textContent = `Mahtavaa ${participant}! sait täydet ${points} pistettä!`;
   }
 }

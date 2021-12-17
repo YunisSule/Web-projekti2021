@@ -77,8 +77,9 @@ function get(x) {
 function myQuiz(){
     quiz = get("quiz");
     quiz.innerHTML = "";
-    // piilottaa otsikon visan ajaksi
+    // piilottaa otsikon ja osallistujan nimi-kentän visan ajaksi
     document.getElementById("header").innerHTML = "";
+    document.getElementById("hide").innerHTML  = "";
     // piilottaa nuoli-napin, koska sitä ei tarvita
     document.getElementById("next").style.visibility = "hidden";
     /*jos kohta visassa on suurempi kuin kysymyksien listan pituus (=> visa on suoritettu/kysymykset on käyty läpi) 
@@ -92,18 +93,41 @@ function myQuiz(){
         for(let i = 0; i<wrongAnswers.length; i++){
             get("testHeader").innerHTML += wrongAnswers[i].toString() + "<br>";
         }
-        return false;
+
+        //Lisätään kuva visualisoimaan lopputulosta. Luodaan kuva ja tallennetaan se muuttujaan ja määritetään sille korkeus ja leveys.
+        let image = document.createElement("img");
+        image.src = "../images/cryingemoji.png";
+        let src = document.getElementById("image");
+        image.style.height = "200px";
+        image.style.width = "200px";
+
+        let image2 = document.createElement("img");
+        image2.src = "../images/happyemoji.png";
+        let src2 = document.getElementById("image2");
+        image2.style.height = "200px";
+        image2.style.width = "200px";
+
+        //Antaa palautetta käyttäjälle, kun visa on suoritettu ja lisää kuvan riippuen käyttäjän saamasta tuloksesta.
+        if(correct < 4) {
+            src.appendChild(image);
+            document.getElementById("input").innerHTML = "Pystyt parempaan, yritä visaa uudelleen.";
+        } else if (correct >= 4){
+            src2.appendChild(image2);
+            document.getElementById("input").innerHTML = "Pärjäsit visassa loistavasti, hienoa!";
+        }
+        
+         return false;
 
     }
     //asettaa tekstin alkuun että mones kysymys on menossa
-    //get("testHeader").innerHTML = "Kysymys " + (position+1)+ "/" + questions.length + " kysymyksestä";
+    get("question-prog").innerHTML = "Kysymys " + (position+1)+ "/" + questions.length + " kysymyksestä";
     //asettaa muuttujat kysymykselle sekä sen vaihtoehdoille esim. choiceA == vastausvaihtoehto a, choiceB == vastausvaihtoehto b... jne.
     question = questions[position].question;
     choiceA = questions[position].a;
     choiceB = questions[position].b;
     choiceC = questions[position].c;
     choiceD = questions[position].d
-    //asettaa diviin "quiz" kysymsen sekä sen vaihtoehdot rivien vaihtojen kanssa
+    //asettaa diviin "quiz" kysymyksen sekä sen vaihtoehdot rivien vaihtojen kanssa
     quiz.innerHTML = "<h3>" +question+"</h3>";
     quiz.innerHTML += "<label> <input type='radio' name='choices' value='A'> "+choiceA+"</label><br>";
     quiz.innerHTML += "<label> <input type='radio' name='choices' value='B'> "+choiceB+"</label><br>";
@@ -114,6 +138,8 @@ function myQuiz(){
 //tarkistaa onko vastaus oikein vai väärin
 function checkAnswer(){
     choices = document.getElementsByName("choices");
+    // Tyhjentää käyttäjän edistymisen, kun tulokset esitetään
+    document.getElementById("question-prog").innerHTML = "";
     choice = "";
     //looppaa vaihtoehtojen läpi sekä tarkistaa vastaako valittu vaihtoehto oikeaa vastausta
     for(let i=0;i<choices.length;i++){
