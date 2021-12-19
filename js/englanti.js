@@ -1,21 +1,20 @@
 // Jenni Annala
-// Tietovisaan katsottu mallia https://www.codemahal.com/video/javascript-quiz-tutorial/ sivulta.
-// luodaan muuttujat visaa varten
+// Used this page as example https://www.codemahal.com/video/javascript-quiz-tutorial/ 
 let positive = 0;
 let testing, test_status, question, choice, choices, correctOne, choice_A, choice_B, choice_C, choice_D;
 let correct = 0;
-// lisätään next napille uusi kuuntelija, joka lisää henkilön nimen sivulle h2 elementtiin.
+
 document.querySelector("#next").addEventListener("click", addName)
 let quest_name = document.getElementById("form");
 let divForName = document.querySelector("#person_name");
 
+// Function where we add participants name in div element at the end of quiz.
 function addName() {
     let header_2 = document.createElement("h2");
     header_2.textContent = quest_name.value;
-    // lisätään uusi elementti divin sisälle
     divForName.append(header_2);
 }
-// tehdään kysymykset ja vastaukset visaan
+// Questions and answers.
 let questions = [{
         question: "Mikä on hirvi englanniksi?",
         a: "Dog",
@@ -67,25 +66,23 @@ function get(x) {
     return document.getElementById(x);
 }
 
-// piilotetaan sivuilta nappi sekä henkilön nimi
 divForName.classList.add("hiding");
 next2.classList.add("hiding");
 
-// funktio, jossa tehdään kysymykset ja tekstit sivulle.
+/* Prints right answers amount, questions and correct answers.
+Gives feedback for participant.
+Creates radio buttons for choices. */
 function allQuestions() {
-    // kun visa on alkanut, piilotetaan etusivun nimipalkki sekä aloitusnappi.
     form.classList.add("hiding");
     form2.classList.add("hiding");
     next.classList.add("hiding");
-    // tuodaan visan kysymyksiä vaihtava nappi takaisin näkyville, kun visa on alkanut
     next2.classList.remove("hiding");
 
     testing = get("testing");
-    // tehdään if lauseke, jossa tulostetaan sivulle visan lopputulos
     if (positive >= questions.length) {
         document.getElementById("testing").innerHTML = "<h2>Sait " + correct + " / " + questions.length + " oikein</h2>";
         document.getElementById("test_status").innerHTML = "";
-        // tehdään if lauseke, jossa annetaan vastaus perustuen käyttäjän saamiin oikeisiin vastauksiin.
+       
         if (correct == questions.length) {
             document.getElementById("feedback").innerHTML = "Hienoa! Sait kaikki kysymykset oikein!";
         } else if (correct == 0 || correct == 1 || correct == 2) {
@@ -93,19 +90,15 @@ function allQuestions() {
         } else {
             document.getElementById("feedback").innerHTML = "Sait pisteitä ihan hyvin!"
         }
-
-        // piilotetaan lopusta nappi sekä laitetaan visaa tekevän henkilön nimi näkyviin.
         next2.classList.add("hiding");
         divForName.classList.remove("hiding");
 
         return false;
     }
 
-    // Näytetään sivulla visan eteneminen
     document.getElementById("test_status").innerHTML = "Kysymys " + [positive + 1] + " / " + questions.length;
     next2.classList.add("hiding");
 
-    // näytetään vastausvaihtoehdot sivulla ja tulostetaan kysymys näkyviin sivulle.
     question = questions[positive].question;
     choice_A = questions[positive].a;
     choice_B = questions[positive].b;
@@ -114,7 +107,6 @@ function allQuestions() {
 
     document.getElementById("testing").innerHTML = "<h4>" + question + "</h4>";
 
-    // tehdään visaan valintavaihtoehdot ja laitetaan ne näkyville.
     document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton1' name='choices' value='A'> " + choice_A + "</label><br>";
     document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton2' name='choices' value='B'> " + choice_B + "</label><br>";
     document.getElementById("testing").innerHTML += "<label> <input type='radio' id='radioButton3' name='choices' value='C'> " + choice_C + "</label><br>";
@@ -123,9 +115,8 @@ function allQuestions() {
 
 }
 
-// Tarkistetaan onko käyttäjän vastaus oikein.
+// Checks if participants answer is correct.
 function correctQuestion() {
-
     question_choices = document.getElementsByName("choices");
     for (let i = 0; i < question_choices.length; i++) {
         if (question_choices[i].checked) {
@@ -135,7 +126,7 @@ function correctQuestion() {
         }
     }
 }
-// Funktio joka tarkistaa käyttäjän vastauksen ja lisää correctin määrää jos vastaus on oikein.
+// Checks answers and adds correct answers amount.
 function checkAnswer() {
     correctQuestion();
     
@@ -149,7 +140,8 @@ function checkAnswer() {
     allQuestions()
 
 }
-// Funktio joka antaa vastauksen käyttäjän vastauksen perusteella.
+/* Gives feedback for participant.
+Hides radio buttons and check answer- button, so participant cant change answer. */
 function showRightAnswer() {
     next2.classList.remove("hiding");
     correctQuestion();
@@ -160,12 +152,10 @@ function showRightAnswer() {
         document.getElementById("rightQuestions").innerHTML = questions[positive].correctOne;
     }
 
-    // piilotetaan tarkista nappi sekä radio buttonit tarkista nappia painaessa, jotta käyttäjä ei voi vaihtaa vastausta.
     next3.classList.add("hiding");
     radioButton1.classList.add("hiding");
     radioButton2.classList.add("hiding");
     radioButton3.classList.add("hiding");
     radioButton4.classList.add("hiding");
-
 }
      
