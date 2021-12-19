@@ -140,7 +140,7 @@ function checkAnswer() {
     allQuestions()
 
 }
-//function that gives feedback for participant and hides radio buttons and check answer- button.
+//function that gives feedback for participant and hides radio buttons and check answer -button.
 function showRightAnswer() {
     forwardButton.classList.remove("hiding");
     correctQuestion();
