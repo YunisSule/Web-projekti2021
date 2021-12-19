@@ -34,7 +34,7 @@ ADD YOUR OWN STYLING HERE */
   display: none;
 }
 
-#next2 {
+#forwardButton {
   float: right;
   margin: 10px;
 }
@@ -47,14 +47,14 @@ ADD YOUR OWN STYLING HERE */
   border: none;
   background: none;
 }
-#next3 {
+#checkingButton {
   margin: 10px;
 }
 #englanti > #next:hover {
   color: green;
 
 }
-#englanti > #next2:hover {
+#englanti > #forwardButton:hover {
   color: green;
 }
 
