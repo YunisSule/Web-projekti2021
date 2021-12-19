@@ -108,13 +108,14 @@ function myQuiz(){
         image2.style.height = "200px";
         image2.style.width = "200px";
 
+        
         //Antaa palautetta käyttäjälle, kun visa on suoritettu ja lisää kuvan riippuen käyttäjän saamasta tuloksesta.
         if(correct < 4) {
             src.appendChild(image);
-            document.getElementById("input").innerHTML = `Pystyt parempaan ${user}, yritä visaa uudelleen.`;
+            document.getElementById("input").innerHTML = "Pystyt parempaan, yritä visaa uudelleen.";
         } else if (correct >= 4){
             src2.appendChild(image2);
-            document.getElementById("input").innerHTML = `Pärjäsit visassa loistavasti ${user}, hienoa!`;
+            document.getElementById("input").innerHTML = `Pärjäsit visassa loistavasti, hienoa!`;
         }
         
          return false;
